@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mahmoud Awad Saad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg:      #0a0a0f;
+      --surface: #111118;
+      --surface2:#1a1a26;
+      --border:  #1e1e2e;
+      --accent:  #f05f40;
+      --accent2: #d94e30;
+      --text:    #e8e8f0;
+      --muted:   #55556a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      line-height: 1.7;
+    }
+
+    /* background grid */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(240,95,64,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240,95,64,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ══ NAVBAR ═══════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .nav-brand span { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 8px; }
+
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ══ HERO SECTION ═════════════════════════ */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text { flex: 1; min-width: 280px; }
+
+    .hero-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(240,95,64,0.4); }
+      50%      { box-shadow: 0 0 0 8px rgba(240,95,64,0); }
+    }
+
+    .hero-name {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero-name span { color: var(--accent); }
+
+    .hero-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .hero-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .info-row i { color: var(--accent); width: 16px; }
+    .info-row a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+    .info-row a:hover { color: var(--accent); }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 11px 26px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 11px 26px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .btn-outline:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+
+    /* Hero image */
+    .hero-image { flex-shrink: 0; }
+
+    .hero-img-ring {
+      padding: 5px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(240,95,64,0.15);
+    }
+
+    .hero-img {
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ══ SECTION COMMONS ══════════════════════ */
+    section {
+      padding: 100px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-title span { color: var(--accent); }
+
+    .title-line {
+      width: 40px; height: 3px;
+      background: var(--accent);
+      margin-bottom: 40px;
+    }
+
+    /* ══ ABOUT SECTION ════════════════════════ */
+    #aboutme { border-top: 1px solid var(--border); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    @media(max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+    }
+
+    .about-card h4 {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 14px;
+      line-height: 1.8;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    /* info list */
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+    .info-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .info-list li i { color: var(--accent); margin-top: 3px; width: 16px; }
+
+    .info-list a { color: var(--text); text-decoration: none; }
+    .info-list a:hover { color: var(--accent); }
+
+    .phone-list {
+      list-style: none;
+      margin-top: 6px;
+      padding-left: 26px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+
+    .phone-list li {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* hobbies */
+    .hobbies { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+
+    .hobby-tag {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+    }
+
+    /* ══ SOCIAL SECTION ═══════════════════════ */
+    #social { border-top: 1px solid var(--border); }
+
+    .social-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .social-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.25s, transform 0.25s;
+      min-width: 180px;
+    }
+
+    .social-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      color: var(--accent);
+    }
+
+    .social-card i { font-size: 1.4rem; color: var(--accent); }
+
+    .social-card .social-name { font-size: 0.88rem; font-weight: 700; }
+    .social-card .social-sub  { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--muted); }
+
+    /* bonus link */
+    .bonus-btn {
+      margin-top: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .bonus-btn:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    /* ══ FOOTER ═══════════════════════════════ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer p {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ══ SCROLLBAR ════════════════════════════ */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav>
+    <span class="nav-brand">Mahmoud<span>.</span></span>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#aboutme">About</a>
+      <a href="#social">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ══ HERO SECTION ════════════════════════ -->
+  <div id="home">
+    <div class="hero-inner">
+
+      <!-- Text -->
+      <div class="hero-text">
+        <div class="hero-tag"><span class="dot"></span> Computer Engineering Graduate</div>
+        <h1 class="hero-name">Mahmoud<br><span>Awad Saad</span></h1>
+        <p class="hero-sub">// Full-Stack Developer & ITI Trainee</p>
+
+        <div class="hero-info">
+          <div class="info-row"><i class="fa-solid fa-location-dot"></i> El Mandra, Alexandria, Egypt</div>
+          <div class="info-row"><i class="fa-solid fa-graduation-cap"></i> Faculty of Engineering — AAST, 2024</div>
+          <div class="info-row">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:mahmoudawad112001@gmail.com">mahmoudawad112001@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="hero-btns">
+          <a href="mailto:mahmoudawad112001@gmail.com" class="btn-primary">
+            <i class="fa-solid fa-envelope" style="margin-right:6px"></i>Contact Me
+          </a>
+          <a href="#aboutme" class="btn-outline">About Me</a>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="hero-image">
+        <div class="hero-img-ring">
+          <img src="./iamges/32.jpg" alt="Mahmoud Awad Saad" class="hero-img"/>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ ABOUT SECTION ═══════════════════════ -->
+  <section id="aboutme">
+    <span class="section-tag">// who i am</span>
+    <h2 class="section-title">About <span>Me</span></h2>
+    <div class="title-line"></div>
+
+    <div class="about-grid">
+
+      <!-- Personal Info Card -->
+      <div class="about-card">
+        <h4><i class="fa-solid fa-user" style="margin-right:8px"></i>Personal Info</h4>
+        <ul class="info-list">
+          <li><i class="fa-solid fa-cake-candles"></i> Age: 25 years</li>
+          <li><i class="fa-solid fa-location-dot"></i> El Mandra, Alexandria</li>
+          <li>
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              Phones:
+              <ul class="phone-list">
+                <li>📱 01280532281</li>
+                <li>📱 01027608204</li>
+                <li>☎️ 035337281</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-graduation-cap"></i>
+            <a href="https://aast.edu/en/" target="_blank">Faculty of Engineering — AAST</a>
+          </li>
+          <li><i class="fa-solid fa-calendar"></i> Graduation Year: 2024</li>
+          <li>
+            <i class="fa-solid fa-heart"></i>
+            <div>
+              Hobbies:
+              <div class="hobbies">
+                <span class="hobby-tag">📚 Reading</span>
+                <span class="hobby-tag">⚽ Football</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Bio Card -->
+      <div class="about-card about-text">
+        <h4><i class="fa-solid fa-quote-left" style="margin-right:8px"></i>Bio</h4>
+        <p>Hello! I'm Mahmoud Awad, a motivated Computer Engineering graduate passionate about technology and problem-solving. I enjoy building web applications and exploring how things work behind the scenes.</p>
+        <p>My strongest quality is perseverance — I see challenges as opportunities to learn. I combine creativity with logic to solve problems from different perspectives.</p>
+        <p>Currently advancing my skills in Full-Stack Web & Generative AI Development through the ITI MERN program. My goal is to build intelligent, scalable applications that make a real difference.</p>
+        <p>I also enjoy sharing knowledge and supporting others — helping people not only strengthens my understanding but builds meaningful connections.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ SOCIAL / CONTACT SECTION ════════════ -->
+  <section id="social">
+    <span class="section-tag">// find me online</span>
+    <h2 class="section-title">My Social <span>Profiles</span></h2>
+    <div class="title-line"></div>
+
+    <div class="social-grid">
+
+      <a href="https://www.facebook.com/MahmoudAwad112001" target="_blank" class="social-card">
+        <i class="fa-brands fa-facebook"></i>
+        <div>
+          <div class="social-name">Facebook</div>
+          <div class="social-sub">MahmoudAwad112001</div>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/mahmoud-awad-795b02203/" target="_blank" class="social-card">
+        <i class="fa-brands fa-linkedin"></i>
+        <div>
+          <div class="social-name">LinkedIn</div>
+          <div class="social-sub">mahmoud-awad</div>
+        </div>
+      </a>
+
+      <a href="mailto:mahmoudawad112001@gmail.com" class="social-card">
+        <i class="fa-brands fa-google"></i>
+        <div>
+          <div class="social-name">Gmail</div>
+          <div class="social-sub">mahmoudawad112001</div>
+        </div>
+      </a>
+
+      <a href="mailto:m.a.mahmoud25@student.aast.edu" class="social-card">
+        <i class="fa-solid fa-envelope"></i>
+        <div>
+          <div class="social-name">University Email</div>
+          <div class="social-sub">m.a.mahmoud25@aast.edu</div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Bonus Page Link -->
+    <a href="./bouns.html" class="bonus-btn">
+      🎁 Visit Bonus Page <i class="fa-solid fa-arrow-right" style="margin-left:6px"></i>
+    </a>
+
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>© 2024 Mahmoud Awad Saad — <a href="https://aast.edu/en/" target="_blank">AAST Engineering</a></p>
+  </footer>
+
+</body>
+</html>
