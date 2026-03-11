@@ -1,11 +1,11 @@
 Repo : 
-1- Repo (the whole course) :
-2- Repo (lab 01): 
+1- Repo (the whole course) : https://github.com/mahmoud112001/BasicJs
+2- Repo (lab 01): https://github.com/mahmoud112001/BasicJs/tree/main/lab1
 
 Depolyment : 
 
-1- the whole course : 
-2- live (lab 01) : 
+1- the whole course : https://mahmoud112001.github.io/BasicJs/
+2- live (lab 01) : https://mahmoud112001.github.io/BasicJs/lab1/welcome.html
 
 Records
 
