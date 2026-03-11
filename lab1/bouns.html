@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bonus Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:      #0a0a0f;
+      --surface: #111118;
+      --border:  #1e1e2e;
+      --accent:  #f05f40;
+      --text:    #e8e8f0;
+      --muted:   #55556a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    /* background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(240,95,64,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240,95,64,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+      animation: fadeDown 0.7s ease both;
+    }
+
+    .tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .subtitle {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* ── Image map container ── */
+    .map-container {
+      position: relative;
+      display: inline-block;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(240,95,64,0.08);
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .map-container img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* overlay label on hover */
+    .map-container::after {
+      content: '🖱️ Click on a logo to visit';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(10,10,15,0.85);
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      text-align: center;
+      padding: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .map-container:hover::after { opacity: 1; }
+
+    /* ── Links grid (fallback for mobile) ── */
+    .links-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 32px;
+      animation: fadeUp 0.7s 0.35s ease both;
+    }
+
+    .link-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition: border-color 0.25s, color 0.25s, transform 0.25s;
+      letter-spacing: 0.05em;
+    }
+
+    .link-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── Back button ── */
+    .back-btn {
+      margin-top: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.25s;
+      animation: fadeUp 0.7s 0.5s ease both;
+    }
+
+    .back-btn:hover {
+      background: #d94e30;
+      transform: translateY(-2px);
+    }
+
+    .back-btn .arrow { font-size: 1.1rem; }
+
+    /* ── Animations ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <span class="tag">// bonus page</span>
+    <h1>Click a logo to <span>explore</span></h1>
+    <p class="subtitle">Use the image map below — each logo is clickable</p>
+  </header>
+
+  <!-- Image Map -->
+  <div class="map-container">
+    <img src="./iamges/google.png" usemap="#image-map" alt="Image map with clickable logos"/>
+  </div>
+
+  <map name="image-map">
+    <area target="_blank" alt="Google"     title="Google"     href="https://www.google.com"     coords="147,41,249,145"  shape="rect"/>
+    <area target="_blank" alt="W3Schools"  title="W3Schools"  href="https://www.w3schools.com/" coords="390,145,254,78"  shape="rect"/>
+    <area target="_blank" alt="YouTube"    title="YouTube"    href="https://www.youtube.com"    coords="457,71,395,173"  shape="rect"/>
+    <area target="_blank" alt="Facebook"   title="Facebook"   href="https://www.facebook.com"   coords="483,147,465,44"  shape="rect"/>
+    <area target="_blank" alt="X"          title="X (Twitter)"href="https://www.x.com"          coords="488,78,548,147"  shape="rect"/>
+  </map>
+
+  <!-- Quick Links (mobile fallback) -->
+  <div class="links-grid">
+    <a href="https://www.google.com"     target="_blank" class="link-btn">🔍 Google</a>
+    <a href="https://www.w3schools.com/" target="_blank" class="link-btn">📚 W3Schools</a>
+    <a href="https://www.youtube.com"    target="_blank" class="link-btn">▶️ YouTube</a>
+    <a href="https://www.facebook.com"   target="_blank" class="link-btn">👤 Facebook</a>
+    <a href="https://www.x.com"          target="_blank" class="link-btn">🐦 X</a>
+  </div>
+
+  <!-- Back Button -->
+  <a href="./home.html" class="back-btn">
+    <span class="arrow">←</span> Back to Home
+  </a>
+
+</body>
+</html>
