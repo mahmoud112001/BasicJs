@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Two</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ══ RESET & VARS ════════════════════════════════ */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #f8f9fc;
+        --surface: #ffffff;
+        --border: #e5e7eb;
+        --accent: #2563eb;
+        --accent2: #7c3aed;
+        --dark: #111827;
+        --text: #374151;
+        --muted: #9ca3af;
+        --nav-h: 64px;
+        --radius: 12px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      /* ══ NAVBAR ══════════════════════════════════════ */
+      .navbar {
+        height: var(--nav-h);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+      }
+
+      .nav-logo {
+        font-family: "Space Mono", monospace;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--dark);
+        text-decoration: none;
+      }
+
+      .nav-logo span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 4px;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 500;
+        padding: 6px 16px;
+        border-radius: 8px;
+        display: block;
+        transition:
+          color 0.2s,
+          background 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+        background: rgba(37, 99, 235, 0.07);
+      }
+
+      /* ══ HERO / LOREM SECTION ════════════════════════ */
+      #home {
+        max-width: 800px;
+        margin: 80px auto;
+        padding: 0 24px;
+      }
+
+      #home .section-tag {
+        font-family: "Space Mono", monospace;
+        font-size: 0.68rem;
+        color: var(--accent);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 14px;
+      }
+
+      #home h2 {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 700;
+        color: var(--dark);
+        line-height: 1.3;
+        margin-bottom: 20px;
+      }
+
+      #home p {
+        font-size: 0.95rem;
+        line-height: 1.85;
+        color: var(--text);
+        /* Show only first paragraph worth of text */
+        display: -webkit-box;
+        line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 28px;
+      }
+
+      #home p.expanded {
+        line-clamp: unset;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 26px;
+        border-radius: 8px;
+        font-family: "Outfit", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+      }
+
+      .btn-primary:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+      }
+
+      /* ══ DIVIDER ═════════════════════════════════════ */
+      .divider {
+        height: 1px;
+        background: var(--border);
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* ══ IMAGE SECTION ═══════════════════════════════ */
+      #news {
+        position: relative;
+        width: 100%;
+        height: 420px;
+        overflow: hidden;
+      }
+
+      #news img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* dark overlay */
+      #news::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7) 0%,
+          transparent 60%
+        );
+        z-index: 1;
+      }
+
+      .image-caption {
+        position: absolute;
+        bottom: 32px;
+        left: 40px;
+        z-index: 2;
+        color: #fff;
+      }
+
+      .image-caption .caption-tag {
+        font-family: "Space Mono", monospace;
+        font-size: 0.68rem;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .image-caption h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      /* ══ CARDS SECTION ═══════════════════════════════ */
+      .cards-section {
+        max-width: 1200px;
+        margin: 80px auto;
+        padding: 0 24px;
+      }
+
+      .cards-section-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 32px;
+      }
+
+      .cards-section-title span {
+        font-family: "Space Mono", monospace;
+        font-size: 0.68rem;
+        color: var(--accent);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 24px;
+      }
+
+      .card-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s,
+          border-color 0.25s;
+      }
+
+      .card-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+        border-color: var(--accent);
+      }
+
+      .card-item img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+
+      .card-body .card-num {
+        font-family: "Space Mono", monospace;
+        font-size: 0.62rem;
+        color: var(--accent);
+        letter-spacing: 0.12em;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .card-body h2 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 6px;
+      }
+
+      .card-body p {
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* ══ DROPDOWN SECTION ════════════════════════════ */
+      .dropdown-section {
+        background: var(--dark);
+        padding: 48px 24px;
+        text-align: center;
+      }
+
+      .dropdown-section label {
+        font-family: "Space Mono", monospace;
+        font-size: 0.72rem;
+        color: var(--muted);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .dropdown-wrap {
+        display: inline-block;
+        position: relative;
+      }
+
+      .dropdown-wrap::after {
+        content: "▾";
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--accent);
+        font-size: 0.75rem;
+        pointer-events: none;
+      }
+
+      #fruits {
+        appearance: none;
+        background: #1f2937;
+        border: 1px solid #374151;
+        color: #e5e7eb;
+        font-family: "Outfit", sans-serif;
+        font-size: 0.9rem;
+        padding: 12px 48px 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        outline: none;
+        min-width: 200px;
+        transition: border-color 0.2s;
+      }
+
+      #fruits:focus {
+        border-color: var(--accent);
+      }
+      #fruits option {
+        background: #1f2937;
+      }
+
+      /* ══ FOOTER ══════════════════════════════════════ */
+      footer {
+        border-top: 1px solid var(--border);
+        background: var(--surface);
+        padding: 24px 40px;
+        text-align: center;
+      }
+
+      footer p {
+        font-family: "Space Mono", monospace;
+        font-size: 0.68rem;
+        color: var(--muted);
+      }
+
+      /* ══ RESPONSIVE ══════════════════════════════════ */
+      @media (max-width: 640px) {
+        .navbar {
+          padding: 0 16px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .image-caption {
+          left: 20px;
+          bottom: 20px;
+        }
+        #news {
+          height: 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══ NAVBAR ════════════════════════════════════ -->
+    <nav class="navbar">
+      <a href="#home" class="nav-logo">My<span>.</span>Logo</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#cards">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- ══ HOME / LOREM ═══════════════════════════════ -->
+    <section id="home">
+      <span class="section-tag">// latest post</span>
+      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit</h2>
+      <p id="lorem-text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam totam,
+        labore nostrum harum similique saepe eius numquam sint adipisci vitae a
+        officiis dolores fugit ex blanditiis officia autem quidem veritatis.
+        Rerum assumenda deserunt eius cumque sunt, unde nesciunt, incidunt
+        eveniet et doloribus impedit veniam tempora dolore. Recusandae dolor
+        rerum non maxime unde cum placeat, tempore, temporibus fugiat quasi, ea
+        repellat dolorum incidunt. Facere ut odio voluptas explicabo sint, odit
+        doloribus ullam, corporis illum neque libero quo error.
+      </p>
+      <button
+        class="btn btn-primary"
+        onclick="
+          const p = document.getElementById('lorem-text');
+          p.classList.toggle('expanded');
+          this.textContent = p.classList.contains('expanded')
+            ? '← Read Less'
+            : 'Read More →';
+        "
+      >
+        Read More →
+      </button>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ══ IMAGE / NEWS ═══════════════════════════════ -->
+    <section id="news">
+      <img
+        src="https://www.equinetmedia.com/hubfs/How-to-find-b2b-blog-images.png"
+        alt="News feature image"
+      />
+      <div class="image-caption">
+        <span class="caption-tag">// featured news</span>
+        <h3>This is the bottom of the page</h3>
+      </div>
+    </section>
+
+    <!-- ══ CARDS ══════════════════════════════════════ -->
+    <div class="cards-section" id="cards">
+      <div class="cards-section-title">
+        <span>// portfolio</span>
+        Our Work
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card template × 6 -->
+        <div class="card-item">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNubLmqdOK9pZWU-2IiD20cuSIdUUDi9-NvQ&s"
+            alt="Card 1"
+          />
+          <div class="card-body">
+            <span class="card-num">CARD_01</span>
+            <h2>Card 1</h2>
+            <p>This is card 1 description.</p>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNubLmqdOK9pZWU-2IiD20cuSIdUUDi9-NvQ&s"
+            alt="Card 2"
+          />
+          <div class="card-body">
+            <span class="card-num">CARD_02</span>
+            <h2>Card 2</h2>
+            <p>This is card 2 description.</p>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNubLmqdOK9pZWU-2IiD20cuSIdUUDi9-NvQ&s"
+            alt="Card 3"
+          />
+          <div class="card-body">
+            <span class="card-num">CARD_03</span>
+            <h2>Card 3</h2>
+            <p>This is card 3 description.</p>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNubLmqdOK9pZWU-2IiD20cuSIdUUDi9-NvQ&s"
+            alt="Card 4"
+          />
+          <div class="card-body">
+            <span class="card-num">CARD_04</span>
+            <h2>Card 4</h2>
+            <p>This is card 4 description.</p>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNubLmqdOK9pZWU-2IiD20cuSIdUUDi9-NvQ&s"
+            alt="Card 5"
+          />
+          <div class="card-body">
+            <span class="card-num">CARD_05</span>
+            <h2>Card 5</h2>
+            <p>This is card 5 description.</p>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNubLmqdOK9pZWU-2IiD20cuSIdUUDi9-NvQ&s"
+            alt="Card 6"
+          />
+          <div class="card-body">
+            <span class="card-num">CARD_06</span>
+            <h2>Card 6</h2>
+            <p>This is card 6 description.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DROPDOWN ════════════════════════════════════ -->
+    <div class="dropdown-section" id="contact">
+      <label for="fruits">// select a fruit</label>
+      <div class="dropdown-wrap">
+        <select id="fruits" name="fruits">
+          <option value="apple">🍎 Apple</option>
+          <option value="banana">🍌 Banana</option>
+          <option value="cherry">🍒 Cherry</option>
+          <option value="orange" selected>🍊 Orange</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ══ FOOTER ══════════════════════════════════════ -->
+    <footer>
+      <p>© 2026 Mahmoud Awad — Basic Web Development Labs</p>
+    </footer>
+  </body>
+</html>
