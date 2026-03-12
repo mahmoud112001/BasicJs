@@ -1,15 +1,19 @@
-Repo : 
+Repo: 
 1- Repo (the whole course) : https://github.com/mahmoud112001/BasicJs
 2- Repo (lab 01): https://github.com/mahmoud112001/BasicJs/tree/main/lab1
+3- Repo (lab 02): https://github.com/mahmoud112001/BasicJs/tree/main/lab2 
 
-Depolyment : 
+Depolyment: 
 
 1- the whole course : https://mahmoud112001.github.io/BasicJs/
 2- live (lab 01) : https://mahmoud112001.github.io/BasicJs/lab1/welcome.html
+2- live (lab 02 main index page) : https://mahmoud112001.github.io/BasicJs/lab2/index.html
+2- live (lab 02 bonus page) : https://mahmoud112001.github.io/BasicJs/lab2/bonus.html
 
-Records
+Records:
 
 1- rec (lab 01) : https://screenrec.com/share/7yVbQ90Inj
+1- rec (lab 02 main page + bonus page) : https://screenrec.com/share/1Z3My4cGFV
 
 personal links:
 
