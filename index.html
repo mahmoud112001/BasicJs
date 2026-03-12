@@ -284,6 +284,24 @@
     .lab-card.mix-card:hover  .lab-arrow { color: var(--text); transform: translate(3px,-3px); }
 
     /* Coming soon */
+    .sub-btn {
+      flex: 1;
+      text-align: center;
+      padding: 8px 0;
+      border-radius: 8px;
+      background: rgba(41,101,241,0.1);
+      color: #2965f1;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(41,101,241,0.2);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .sub-btn:hover {
+      background: rgba(41,101,241,0.2);
+      transform: translateY(-2px);
+    }
+
     .lab-card.coming-soon {
       opacity: 0.3;
       pointer-events: none;
@@ -440,17 +458,20 @@
         <span class="lab-arrow">↗</span>
       </a>
 
-      <a class="lab-card css-card" href="./lab2/index.html">
+      <div class="lab-card css-card" style="display:flex; flex-direction:column; gap:12px; cursor:default;">
         <div class="card-top">
           <span class="lab-number">LAB_02</span>
           <span class="tech-pill pill-css">CSS</span>
         </div>
         <h2 class="lab-title">CSS Styling & Layout</h2>
         <p class="lab-desc">Sticky navbar, glass morphism, CSS Grid cards, image overlays, dropdowns and multi-section layout.</p>
-        <span class="lab-arrow">↗</span>
-      </a>
+        <div style="display:flex; gap:8px; margin-top:auto;">
+          <a href="./lab2/index.html" class="sub-btn">Main Page ↗</a>
+          <a href="./lab2/bonus.html" class="sub-btn">Bonus Page ↗</a>
+        </div>
+      </div>
 
-      <a class="lab-card css-card" href="#">
+      <a class="lab-card css-card" href="./lab3/index.html">
         <div class="card-top">
           <span class="lab-number">LAB_03</span>
           <span class="tech-pill pill-css">CSS</span>
@@ -460,7 +481,7 @@
         <span class="lab-arrow">↗</span>
       </a>
 
-      <a class="lab-card css-card" href="#">
+      <a class="lab-card css-card" href="./lab4/index.html">
         <div class="card-top">
           <span class="lab-number">LAB_04</span>
           <span class="tech-pill pill-css">CSS</span>
@@ -470,7 +491,7 @@
         <span class="lab-arrow">↗</span>
       </a>
 
-      <a class="lab-card js-card" href="#">
+      <a class="lab-card js-card" href="./lab5/index.html">
         <div class="card-top">
           <span class="lab-number">LAB_05</span>
           <span class="tech-pill pill-js">JS</span>
@@ -480,7 +501,7 @@
         <span class="lab-arrow">↗</span>
       </a>
 
-      <a class="lab-card js-card" href="#">
+      <a class="lab-card js-card" href="./lab6/index.html">
         <div class="card-top">
           <span class="lab-number">LAB_06</span>
           <span class="tech-pill pill-js">JS</span>
@@ -490,6 +511,15 @@
         <span class="lab-arrow">↗</span>
       </a>
 
+      <div class="lab-card coming-soon mix-card">
+        <div class="card-top">
+          <span class="lab-number">LAB_07</span>
+          <span class="tech-pill pill-mix">soon</span>
+        </div>
+        <h2 class="lab-title">Coming Soon</h2>
+        <p class="lab-desc">Next lab will appear here.</p>
+        <span class="lab-arrow">↗</span>
+      </div>
 
     </div>
 
