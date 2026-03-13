@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JS Exercises — Lab 03</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">JS<span>.</span>Exercises</span>
+  <div class="nav-pills">
+    <a href="#ex1">Calculator</a>
+    <a href="#ex2">Guessing</a>
+    <a href="#ex3">Arrays</a>
+    <a href="#ex4">Table</a>
+    <a href="#ex5">Patterns</a>
+  </div>
+</nav>
+
+<main>
+
+  <div class="page-title">
+    <span class="tag">// lab_03 — javascript fundamentals</span>
+    <h1>JS Exercises</h1>
+    <p>Switch · Loops · Arrays · Validation</p>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- EX 1 — CALCULATOR                           -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="ex-card" id="ex1">
+    <div class="ex-header">
+      <span class="ex-num">EX_01</span>
+      <h2>Simple Calculator</h2>
+    </div>
+    <div class="ex-body">
+
+      <div class="row">
+        <div class="field">
+          <label for="c-num1">First Number</label>
+          <input type="number" id="c-num1" placeholder="e.g. 10"/>
+          <span class="err-msg" id="c-num1-err"></span>
+        </div>
+        <div class="field">
+          <label for="c-num2">Second Number</label>
+          <input type="number" id="c-num2" placeholder="e.g. 5"/>
+          <span class="err-msg" id="c-num2-err"></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="c-op">Operation</label>
+        <select id="c-op">
+          <option value="">— Choose operation —</option>
+          <option value="+">+ Addition</option>
+          <option value="-">− Subtraction</option>
+          <option value="*">× Multiplication</option>
+          <option value="/">÷ Division</option>
+        </select>
+        <span class="err-msg" id="c-op-err"></span>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-yellow" onclick="runCalculator()">Calculate</button>
+        <button class="btn btn-ghost" onclick="resetCalc()">Reset</button>
+      </div>
+
+      <div class="output" id="c-out">
+        <span class="out-label">RESULT</span>
+        <span id="c-result"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- EX 2 — GUESSING GAME                        -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="ex-card" id="ex2">
+    <div class="ex-header">
+      <span class="ex-num">EX_02</span>
+      <h2>Number Guessing Game</h2>
+    </div>
+    <div class="ex-body">
+
+      <div class="guess-state">
+        <span class="state-pill" id="g-status">Not Started</span>
+        <span class="state-pill" id="g-attempts">Attempts: 0</span>
+      </div>
+
+      <div class="field">
+        <label for="g-input">Your Guess (1 – 10)</label>
+        <input type="number" id="g-input" placeholder="Enter a number..." min="1" max="10" disabled/>
+        <span class="err-msg" id="g-err"></span>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-yellow" id="g-start-btn" onclick="startGame()">Start Game</button>
+        <button class="btn btn-yellow" id="g-guess-btn" onclick="makeGuess()" style="display:none;">Guess</button>
+        <button class="btn btn-ghost" onclick="resetGame()">Reset</button>
+      </div>
+
+      <div class="output" id="g-out">
+        <span class="out-label">FEEDBACK</span>
+        <span id="g-msg"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- EX 3 — ARRAY PROCESSING                     -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="ex-card" id="ex3">
+    <div class="ex-header">
+      <span class="ex-num">EX_03</span>
+      <h2>Array Processing</h2>
+    </div>
+    <div class="ex-body">
+
+      <div class="field">
+        <label>Input Array</label>
+        <input type="text" id="arr-input" value="12, -5, 8, 0, -3, 15, 22, -8, 6" placeholder="e.g. 12, -5, 8, 0, -3"/>
+        <span class="err-msg" id="arr-err"></span>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-yellow" onclick="runArray()">Process Array</button>
+        <button class="btn btn-ghost" onclick="resetArray()">Reset</button>
+      </div>
+
+      <div class="output neutral show" id="arr-out" style="display:none;">
+        <span class="out-label">ARRAY BREAKDOWN</span>
+        <div class="array-display" id="arr-badges"></div>
+        <div id="arr-stats"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- EX 4 — MULTIPLICATION TABLE                 -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="ex-card" id="ex4">
+    <div class="ex-header">
+      <span class="ex-num">EX_04</span>
+      <h2>Multiplication Table</h2>
+    </div>
+    <div class="ex-body">
+
+      <div class="row">
+        <div class="field">
+          <label for="t-size">Table Size (2 – 15)</label>
+          <input type="number" id="t-size" value="10" min="2" max="15" placeholder="10"/>
+          <span class="err-msg" id="t-err"></span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-yellow" onclick="runTable()">Generate Table</button>
+        <button class="btn btn-ghost" onclick="resetTable()">Reset</button>
+      </div>
+
+      <div class="output neutral" id="t-out" style="overflow-x:auto; padding:0;">
+        <table class="mult-table" id="t-table"></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- EX 5 — PATTERNS                             -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="ex-card" id="ex5">
+    <div class="ex-header">
+      <span class="ex-num">EX_05</span>
+      <h2>Pattern Printing (Bonus)</h2>
+    </div>
+    <div class="ex-body">
+
+      <div class="row">
+        <div class="field">
+          <label for="p-rows">Rows (1 – 20)</label>
+          <input type="number" id="p-rows" value="5" min="1" max="20" placeholder="5"/>
+          <span class="err-msg" id="p-err"></span>
+        </div>
+        <div class="field">
+          <label for="p-type">Pattern</label>
+          <select id="p-type">
+            <option value="a">Pattern A — Left Triangle (★)</option>
+            <option value="b">Pattern B — Centered Triangle (★)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-yellow" onclick="runPattern()">Generate Pattern</button>
+        <button class="btn btn-ghost" onclick="resetPattern()">Reset</button>
+      </div>
+
+      <div class="output neutral" id="p-out">
+        <span class="out-label">OUTPUT</span>
+        <div class="pattern-box" id="p-result"></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="./script.js"></script>
+</body>
+</html>
