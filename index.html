@@ -297,6 +297,14 @@
       border: 1px solid rgba(41,101,241,0.2);
       transition: background 0.2s, transform 0.2s;
     }
+    .sub-btn-js {
+      background: rgba(247,223,30,0.08);
+      color: #c9a800;
+      border-color: rgba(247,223,30,0.25);
+    }
+    .sub-btn-js:hover {
+      background: rgba(247,223,30,0.18) !important;
+    }
     .sub-btn:hover {
       background: rgba(41,101,241,0.2);
       transform: translateY(-2px);
@@ -471,15 +479,18 @@
         </div>
       </div>
 
-      <a class="lab-card css-card" href="./lab3/index.html">
+      <div class="lab-card js-card" style="display:flex; flex-direction:column; gap:12px; cursor:default;">
         <div class="card-top">
           <span class="lab-number">LAB_03</span>
-          <span class="tech-pill pill-css">CSS</span>
+          <span class="tech-pill pill-js">JS</span>
         </div>
-        <h2 class="lab-title">CSS Styling</h2>
-        <p class="lab-desc">Selectors, box model, colors, typography and cascading rules.</p>
-        <span class="lab-arrow">↗</span>
-      </a>
+        <h2 class="lab-title">JavaScript Fundamentals</h2>
+        <p class="lab-desc">Switch, loops, arrays, validation and interactive UI — Calculator, Guessing Game, Patterns & more.</p>
+        <div style="display:flex; gap:8px; margin-top:auto;">
+          <a href="./lab3/index.html" class="sub-btn sub-btn-js">Main Page ↗</a>
+          <a href="./lab3/JS-day-one/" class="sub-btn sub-btn-js">JS Day One ↗</a>
+        </div>
+      </div>
 
       <a class="lab-card css-card" href="./lab4/index.html">
         <div class="card-top">
