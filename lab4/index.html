@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JS Exercises — Lab 04</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:      #0d1117;
+      --surface: #161b22;
+      --card:    #1c2128;
+      --border:  #30363d;
+      --accent:  #f7df1e;
+      --green:   #3fb950;
+      --red:     #f85149;
+      --blue:    #58a6ff;
+      --purple:  #bc8cff;
+      --orange:  #ffa657;
+      --text:    #e6edf3;
+      --muted:   #8b949e;
+      --radius:  12px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── NAV ── */
+    nav {
+      background: rgba(13,17,23,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--text); }
+    .nav-logo span { color: var(--accent); }
+    .nav-pills { display: flex; gap: 4px; flex-wrap: wrap; }
+    .nav-pills a {
+      font-size: 0.72rem; color: var(--muted); text-decoration: none;
+      padding: 4px 10px; border-radius: 20px; border: 1px solid transparent; transition: all 0.2s;
+    }
+    .nav-pills a:hover { color: var(--accent); border-color: rgba(247,223,30,0.3); background: rgba(247,223,30,0.06); }
+
+    /* ── LAYOUT ── */
+    main { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; display: flex; flex-direction: column; gap: 28px; }
+
+    .page-title { text-align: center; margin-bottom: 8px; }
+    .page-title .tag { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 10px; }
+    .page-title h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; }
+    .page-title p { font-size: 0.88rem; color: var(--muted); margin-top: 8px; }
+
+    /* ── CARD ── */
+    .ex-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.25s; }
+    .ex-card:hover { border-color: rgba(247,223,30,0.25); }
+    .ex-header { display: flex; align-items: center; gap: 12px; padding: 18px 24px 14px; border-bottom: 1px solid var(--border); }
+    .ex-num { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--accent); background: rgba(247,223,30,0.07); border: 1px solid rgba(247,223,30,0.2); padding: 3px 10px; border-radius: 20px; letter-spacing: 0.1em; white-space: nowrap; }
+    .ex-header h2 { font-size: 0.95rem; font-weight: 600; }
+    .ex-body { padding: 22px; }
+
+    /* ── FORM ── */
+    .field { margin-bottom: 14px; }
+    label { display: block; font-size: 0.74rem; font-weight: 600; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.06em; }
+    input[type="text"], input[type="number"], select, textarea {
+      width: 100%; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); font-family: 'Outfit', sans-serif;
+      font-size: 0.88rem; padding: 9px 13px; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    textarea { resize: vertical; min-height: 70px; }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(247,223,30,0.07); }
+    input.error { border-color: var(--red) !important; }
+    input.ok, select.ok { border-color: var(--green) !important; }
+    .err-msg { font-size: 0.72rem; color: var(--red); margin-top: 4px; min-height: 14px; display: block; }
+    .row { display: flex; gap: 12px; }
+    .row .field { flex: 1; }
+
+    /* ── BUTTON ── */
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 20px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+    .btn-yellow { background: var(--accent); color: #111; }
+    .btn-yellow:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+    .btn-red { background: rgba(248,81,73,0.12); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
+    .btn-red:hover { background: rgba(248,81,73,0.22); }
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+
+    /* ── OUTPUT ── */
+    .output { margin-top: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; font-family: 'Space Mono', monospace; font-size: 0.78rem; line-height: 1.75; display: none; }
+    .output.show { display: block; }
+    .output.success { border-color: var(--green); }
+    .output.danger  { border-color: var(--red); }
+    .output.info    { border-color: var(--blue); }
+    .output.neutral { border-color: var(--border); }
+    .out-label { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 8px; }
+
+    /* ── BADGES ── */
+    .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+    .badge { font-family: 'Space Mono', monospace; font-size: 0.7rem; padding: 3px 10px; border-radius: 6px; border: 1px solid var(--border); }
+    .badge.green  { border-color: var(--green);  color: var(--green);  background: rgba(63,185,80,0.07); }
+    .badge.red    { border-color: var(--red);    color: var(--red);    background: rgba(248,81,73,0.07); }
+    .badge.blue   { border-color: var(--blue);   color: var(--blue);   background: rgba(88,166,255,0.07); }
+    .badge.purple { border-color: var(--purple); color: var(--purple); background: rgba(188,140,255,0.07); }
+    .badge.orange { border-color: var(--orange); color: var(--orange); background: rgba(255,166,87,0.07); }
+    .badge.muted  { border-color: var(--border); color: var(--muted);  background: transparent; }
+
+    /* ── TODO LIST ── */
+    .todo-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--surface); margin-bottom: 8px; gap: 10px; transition: opacity 0.2s;
+    }
+    .todo-item.done { opacity: 0.45; }
+    .todo-item.done .todo-task { text-decoration: line-through; color: var(--muted); }
+    .todo-task { font-size: 0.88rem; flex: 1; }
+    .todo-actions { display: flex; gap: 6px; }
+    .todo-actions button { padding: 4px 10px; font-size: 0.72rem; border-radius: 6px; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'Outfit', sans-serif; transition: all 0.2s; }
+    .todo-actions button:hover { color: var(--text); }
+    .todo-actions .done-btn:hover  { color: var(--green); border-color: var(--green); }
+    .todo-actions .del-btn:hover   { color: var(--red);   border-color: var(--red); }
+
+    /* ── LIBRARY ── */
+    .book-item { padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); margin-bottom: 8px; }
+    .book-title { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+    .book-meta  { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
+
+    /* ── TABS (for Q1 sub-parts) ── */
+    .tabs { display: flex; gap: 4px; margin-bottom: 18px; flex-wrap: wrap; }
+    .tab { padding: 6px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'Outfit', sans-serif; transition: all 0.2s; }
+    .tab.active { background: rgba(247,223,30,0.1); color: var(--accent); border-color: rgba(247,223,30,0.35); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-pills { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">JS<span>.</span>Lab 04</span>
+  <div class="nav-pills">
+    <a href="#ex1">Arrays</a>
+    <a href="#ex2">Library</a>
+    <a href="#ex3">Dates</a>
+    <a href="#ex4">Strings</a>
+    <a href="#ex5">Todo</a>
+  </div>
+</nav>
+
+<main>
+
+  <div class="page-title">
+    <span class="tag">// lab_04 — javascript day two</span>
+    <h1>JS Exercises</h1>
+    <p>Arrays · Objects · Dates · Strings · DOM</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       EX 1 — ARRAY OPERATIONS
+  ══════════════════════════════════════════ -->
+  <div class="ex-card" id="ex1">
+    <div class="ex-header">
+      <span class="ex-num">EX_01</span>
+      <h2>Array Operations</h2>
+    </div>
+    <div class="ex-body">
+
+      <div class="field">
+        <label>Input Array (comma-separated numbers)</label>
+        <input type="text" id="arr-input" value="3, 7, 2, 9, 2, 5, 7, 1"/>
+        <span class="err-msg" id="arr-err"></span>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('arr','max',this)">Max</button>
+        <button class="tab" onclick="switchTab('arr','min',this)">Min</button>
+        <button class="tab" onclick="switchTab('arr','sum',this)">Sum</button>
+        <button class="tab" onclick="switchTab('arr','dedup',this)">Remove Duplicates</button>
+      </div>
+
+      <!-- Max -->
+      <div class="tab-panel active" id="arr-max">
+        <div class="btn-row">
+          <button class="btn btn-yellow" onclick="runArrMax()">Find Maximum</button>
+          <button class="btn btn-ghost" onclick="resetArr('arr-out-max')">Reset</button>
+        </div>
+        <div class="output" id="arr-out-max">
+          <span class="out-label">RESULT</span>
+          <span id="arr-res-max"></span>
+        </div>
+      </div>
+
+      <!-- Min -->
+      <div class="tab-panel" id="arr-min">
+        <div class="btn-row">
+          <button class="btn btn-yellow" onclick="runArrMin()">Find Minimum</button>
+          <button class="btn btn-ghost" onclick="resetArr('arr-out-min')">Reset</button>
+        </div>
+        <div class="output" id="arr-out-min">
+          <span class="out-label">RESULT</span>
+          <span id="arr-res-min"></span>
+        </div>
+      </div>
+
+      <!-- Sum -->
+      <div class="tab-panel" id="arr-sum">
+        <div class="btn-row">
+          <button class="btn btn-yellow" onclick="runArrSum()">Calculate Sum</button>
+          <button class="btn btn-ghost" onclick="resetArr('arr-out-sum')">Reset</button>
+        </div>
+        <div class="output" id="arr-out-sum">
+          <span class="out-label">RESULT</span>
+          <span id="arr-res-sum"></span>
+        </div>
+      </div>
+
+      <!-- Dedup -->
+      <div class="tab-panel" id="arr-dedup">
+        <div class="btn-row">
+          <button class="btn btn-yellow" onclick="runArrDedup()">Remove Duplicates</button>
+          <button class="btn btn-ghost" onclick="resetArr('arr-out-dedup')">Reset</button>
+        </div>
+        <div class="output" id="arr-out-dedup">
+          <span class="out-label">RESULT</span>
+          <div id="arr-res-dedup"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       EX 2 — BOOK LIBRARY
+  ══════════════════════════════════════════ -->
+  <div class="ex-card" id="ex2">
+    <div class="ex-header">
+      <span class="ex-num">EX_02</span>
+      <h2>Book Library</h2>
+    </div>
+    <div class="ex-body">
+
+      <!-- Add book -->
+      <div class="row">
+        <div class="field">
+          <label>Title</label>
+          <input type="text" id="b-title" placeholder="e.g. Clean Code"/>
+          <span class="err-msg" id="b-title-err"></span>
+        </div>
+        <div class="field">
+          <label>Author</label>
+          <input type="text" id="b-author" placeholder="e.g. Robert C. Martin"/>
+          <span class="err-msg" id="b-author-err"></span>
+        </div>
+        <div class="field" style="max-width:110px;">
+          <label>Year</label>
+          <input type="number" id="b-year" placeholder="2024"/>
+          <span class="err-msg" id="b-year-err"></span>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-bottom:18px;">
+        <button class="btn btn-yellow" onclick="addBook()">+ Add Book</button>
+      </div>
+
+      <!-- Search -->
+      <div class="row">
+        <div class="field">
+          <label>Search by Author</label>
+          <input type="text" id="b-search-author" placeholder="Author name..."/>
+        </div>
+        <div class="field">
+          <label>Search by Year</label>
+          <input type="number" id="b-search-year" placeholder="e.g. 2025"/>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-yellow" onclick="searchBooks('author')">Search Author</button>
+        <button class="btn btn-yellow" onclick="searchBooks('year')">Search Year</button>
+        <button class="btn btn-ghost" onclick="displayAllBooks()">Show All</button>
+        <button class="btn btn-red" onclick="clearLibrary()">Clear Library</button>
+      </div>
+
+      <div class="output neutral show" id="lib-out" style="margin-top:16px; display:block;">
+        <span class="out-label">LIBRARY</span>
+        <div id="lib-books"><span style="color:var(--muted); font-size:0.78rem;">No books yet. Add some above.</span></div>
+        <div id="lib-count" style="margin-top:8px; font-size:0.7rem; color:var(--muted);"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       EX 3 — DATE UTILITIES
+  ══════════════════════════════════════════ -->
+  <div class="ex-card" id="ex3">
+    <div class="ex-header">
+      <span class="ex-num">EX_03</span>
+      <h2>Date Utilities</h2>
+    </div>
+    <div class="ex-body">
+
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('date','between',this)">Days Between</button>
+        <button class="tab" onclick="switchTab('date','leap',this)">Leap Year</button>
+        <button class="tab" onclick="switchTab('date','format',this)">Format Date</button>
+        <button class="tab" onclick="switchTab('date','dayname',this)">Day Name</button>
+      </div>
+
+      <!-- Days Between -->
+      <div class="tab-panel active" id="date-between">
+        <div class="row">
+          <div class="field">
+            <label>Date 1</label>
+            <input type="date" id="d-date1"/>
+            <span class="err-msg" id="d-date1-err"></span>
+          </div>
+          <div class="field">
+            <label>Date 2</label>
+            <input type="date" id="d-date2"/>
+            <span class="err-msg" id="d-date2-err"></span>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-yellow" onclick="runDaysBetween()">Calculate</button>
+          <button class="btn btn-ghost" onclick="resetOut('d-out-between')">Reset</button>
+        </div>
+        <div class="output" id="d-out-between">
+          <span class="out-label">RESULT</span>
+          <span id="d-res-between"></span>
+        </div>
+      </div>
+
+      <!-- Leap Year -->
+      <div class="tab-panel" id="date-leap">
+        <div class="field">
+          <label>Year</label>
+          <input type="number" id="d-year" placeholder="e.g. 2024" style="max-width:200px;"/>
+          <span class="err-msg" id="d-year-err"></span>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-yellow" onclick="runLeapYear()">Check</button>
+          <button class="btn btn-ghost" onclick="resetOut('d-out-leap')">Reset</button>
+        </div>
+        <div class="output" id="d-out-leap">
+          <span class="out-label">RESULT</span>
+          <span id="d-res-leap"></span>
+        </div>
+      </div>
+
+      <!-- Format Date -->
+      <div class="tab-panel" id="date-format">
+        <div class="field">
+          <label>Date Input</label>
+          <input type="date" id="d-format-in"/>
+          <span class="err-msg" id="d-format-err"></span>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-yellow" onclick="runFormatDate()">Format</button>
+          <button class="btn btn-ghost" onclick="resetOut('d-out-format')">Reset</button>
+        </div>
+        <div class="output" id="d-out-format">
+          <span class="out-label">RESULT</span>
+          <span id="d-res-format"></span>
+        </div>
+      </div>
+
+      <!-- Day Name -->
+      <div class="tab-panel" id="date-dayname">
+        <div class="field">
+          <label>Date</label>
+          <input type="date" id="d-dayname-in"/>
+          <span class="err-msg" id="d-dayname-err"></span>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-yellow" onclick="runGetDayName()">Get Day Name</button>
+          <button class="btn btn-ghost" onclick="resetOut('d-out-dayname')">Reset</button>
+        </div>
+        <div class="output" id="d-out-dayname">
+          <span class="out-label">RESULT</span>
+          <span id="d-res-dayname"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       EX 4 — STRING UTILITIES
+  ══════════════════════════════════════════ -->
+  <div class="ex-card" id="ex4">
+    <div class="ex-header">
+      <span class="ex-num">EX_04</span>
+      <h2>String Utilities</h2>
+    </div>
+    <div class="ex-body">
+
+      <div class="field">
+        <label>Input String</label>
+        <input type="text" id="str-input" placeholder="Type something..."/>
+        <span class="err-msg" id="str-err"></span>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-yellow" onclick="runAllStrings()">Run All</button>
+        <button class="btn btn-ghost" onclick="resetOut('str-out')">Reset</button>
+      </div>
+
+      <div class="output neutral" id="str-out">
+        <span class="out-label">RESULTS</span>
+        <div id="str-results"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       EX 5 — TODO LIST
+  ══════════════════════════════════════════ -->
+  <div class="ex-card" id="ex5">
+    <div class="ex-header">
+      <span class="ex-num">EX_05</span>
+      <h2>Todo List</h2>
+    </div>
+    <div class="ex-body">
+
+      <div class="row">
+        <div class="field">
+          <label>Task</label>
+          <input type="text" id="todo-task" placeholder="e.g. Learn JavaScript"/>
+          <span class="err-msg" id="todo-err"></span>
+        </div>
+        <div class="field" style="max-width:150px;">
+          <label>Priority</label>
+          <select id="todo-priority">
+            <option value="high">🔴 High</option>
+            <option value="medium" selected>🟡 Medium</option>
+            <option value="low">🟢 Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-bottom:16px;">
+        <button class="btn btn-yellow" onclick="addTodo()">+ Add Task</button>
+        <button class="btn btn-ghost" onclick="filterTodo('all')">All</button>
+        <button class="btn btn-ghost" onclick="filterTodo('high')">🔴 High</button>
+        <button class="btn btn-ghost" onclick="filterTodo('medium')">🟡 Medium</button>
+        <button class="btn btn-ghost" onclick="filterTodo('low')">🟢 Low</button>
+      </div>
+
+      <div id="todo-list"></div>
+      <div id="todo-stats" style="font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--muted); margin-top:10px;"></div>
+
+    </div>
+  </div>
+
+</main>
+<script src="./script.js"></script>
+</body>
+</html>
