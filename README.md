@@ -28,12 +28,19 @@ BasicJs/
 │   ├── bonus.html      ← Space-themed navbar page
 │   └── README.md
 │
-└── lab3/
-    ├── JS-day-one/     ← Day one JS exercises folder
-    ├── index.html      ← JS Exercises UI (Calculator, Game, Arrays...)
+├── lab3/
+│   ├── JS-day-one/     ← Day one JS exercises folder
+│   ├── index.html      ← JS Exercises UI (Calculator, Game, Arrays...)
+│   ├── script.js       ← JavaScript logic
+│   ├── style.css       ← Stylesheet
+│   └── readme.md
+│
+└── lab4/
+    ├── Screenshots/    ← Exercise output screenshots
+    ├── JS-day-two/     ← Day two JS exercises folder
+    ├── index.html      ← JS Exercises UI (Arrays, Library, Dates, Strings, Todo)
     ├── script.js       ← JavaScript logic
-    ├── style.css       ← Stylesheet
-    └── readme.md
+    └── README.md
 ```
 
 ---
@@ -80,6 +87,7 @@ BasicJs/
 - JavaScript `classList.toggle()` for Read More / Read Less
 
 **Bugs Fixed from Original:**
+
 | Bug | Fix |
 |---|---|
 | `@import` after CSS reset — invalid | Moved to first line |
@@ -111,6 +119,7 @@ BasicJs/
 | 05 | Pattern Printing (Bonus) | Nested loops, string repetition, `innerHTML` rendering |
 
 **Bugs Fixed from Original:**
+
 | Bug | Fix |
 |---|---|
 | `num1/0 != Infinity` — wrong validation | `isNaN(Number(val))` — correct method |
@@ -119,6 +128,42 @@ BasicJs/
 | `document.write()` — overwrites entire page | Replaced with `innerHTML` into target element |
 | `console.log()` — invisible to user | All output rendered on screen |
 | `var` — function-scoped, error-prone | Replaced with `let` / `const` |
+
+---
+
+### 🟠 Lab 04 — JavaScript Day Two
+
+**Focus:** Arrays, Objects, Dates, Strings, DOM CRUD operations
+
+| File | Description |
+|---|---|
+| `index.html` | Full UI for all 5 exercises + bonus |
+| `script.js` | JavaScript logic |
+| `Screenshots/` | Exercise output screenshots |
+| `JS-day-two/` | Additional day-two JS exercises |
+
+**Exercises:**
+
+| # | Exercise | Key Concepts |
+|---|---|---|
+| 01 | Array Operations | `Math.max/min`, `reduce`, `Set`, spread operator |
+| 02 | Book Library | Objects, arrays, search with `filter`, `includes` |
+| 03 | Date Utilities | `Date`, `getDay`, `padStart`, leap year logic |
+| 04 | String Utilities | Reverse, vowel count (regex), title case, palindrome |
+| 05 | Todo List | CRUD, priority filter, toggle complete, `Date.now()` IDs |
+| Bonus | Deep Copy / Clone | Shallow vs deep copy, `JSON.parse/stringify` |
+
+**Bugs Fixed from Original:**
+
+| Bug | Fix |
+|---|---|
+| `.sort()` to find max/min — mutates array | `Math.max(...arr)` / `Math.min(...arr)` — no mutation |
+| Manual `splice` loop to remove duplicates — skips elements | `[...new Set(arr)]` — clean one-liner |
+| `getMonth()` without `+1` — off by one | `getMonth() + 1` with `padStart(2,'0')` |
+| `for` loop to find day name by index — unnecessary | Direct `days[getDay()]` lookup |
+| `split(" ").join("")` — misses multiple spaces | `replace(/\s+/g, '')` — removes all whitespace |
+| `completed = true` only — no undo | `completed = !completed` toggle |
+| `console.log()` for all output | All results rendered on screen |
 
 ---
 
@@ -142,21 +187,22 @@ cd BasicJs
 |---|---|
 | HTML5 | Page structure, semantic elements, forms, image maps |
 | CSS3 | Layout (Flexbox, Grid), animations, custom properties |
-| JavaScript (ES6+) | DOM manipulation, validation, game logic, array processing |
+| JavaScript (ES6+) | DOM manipulation, validation, game logic, array & object processing |
 | Google Fonts | `Outfit` + `Space Mono` typography |
 | FontAwesome | Social media icons in Lab 1 |
 
 ---
 
-## 📊 Lab Comparison
+## 📊 Labs Comparison
 
-| | Lab 01 | Lab 02 | Lab 03 |
-|---|---|---|---|
-| **Technology** | HTML | CSS | JavaScript |
-| **Pages** | 3 | 2 | 1 + folder |
-| **Main concept** | Structure & Multimedia | Layout & Styling | Logic & Interactivity |
-| **Bonus** | Image map | Space navbar | Pattern printing |
-| **README** | ✅ | ✅ | ✅ |
+| | Lab 01 | Lab 02 | Lab 03 | Lab 04 |
+|---|---|---|---|---|
+| **Technology** | HTML | CSS | JavaScript | JavaScript |
+| **Focus** | Structure & Multimedia | Layout & Styling | Logic & Loops | Objects & Arrays |
+| **Pages / Files** | 3 pages | 2 pages | 1 + folder | 1 + folder |
+| **Main concept** | HTML elements | CSS layout | Switch, loops, DOM | Objects, dates, strings |
+| **Bonus** | Image map | Space navbar | Pattern printing | Deep copy / Clone |
+| **README** | ✅ | ✅ | ✅ | ✅ |
 
 ---
 
