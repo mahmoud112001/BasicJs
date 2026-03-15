@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lab 05 — DOM Manipulation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+ <link rel="stylesheet" href="index-style.css">
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <span class="tag">// lab_05 — javascript & dom</span>
+    <h1>DOM Manipulation</h1>
+    <p>Four exercises covering DOM interaction, dynamic rendering, event handling, and CSS class manipulation with JavaScript.</p>
+  </div>
+
+  <!-- Tasks -->
+  <div class="tasks-grid">
+
+    <a class="task-card" href="./task01-profile-card/task01-profile-card.html">
+      <span class="task-num">TASK_01</span>
+      <div class="task-info">
+        <div class="task-title">Profile Card</div>
+        <div class="task-desc">Dynamically update a profile card's name and bio using DOM manipulation with live validation and toast feedback.</div>
+        <div class="task-concepts">
+          <span class="concept">getElementById</span>
+          <span class="concept">textContent</span>
+          <span class="concept">trim()</span>
+          <span class="concept">classList</span>
+          <span class="concept">keydown event</span>
+        </div>
+      </div>
+      <span class="task-arrow">↗</span>
+    </a>
+
+    <a class="task-card" href="./task02-task-list/task02-task-list.html">
+      <span class="task-num">TASK_02</span>
+      <div class="task-info">
+        <div class="task-title">Task List</div>
+        <div class="task-desc">Full CRUD task manager — add, complete, delete and filter tasks by priority. Includes stats counter and empty state.</div>
+        <div class="task-concepts">
+          <span class="concept">createElement</span>
+          <span class="concept">appendChild</span>
+          <span class="concept">removeChild</span>
+          <span class="concept">filter()</span>
+          <span class="concept">Date.now()</span>
+        </div>
+      </div>
+      <span class="task-arrow">↗</span>
+    </a>
+
+    <a class="task-card" href="./task03-theme-switcher/task03-theme-switcher.html">
+      <span class="task-num">TASK_03</span>
+      <div class="task-info">
+        <div class="task-title">Theme Switcher</div>
+        <div class="task-desc">Switch between 5 color themes (Dark, Light, Ocean, Sunset, Forest) using CSS Variables and classList toggling.</div>
+        <div class="task-concepts">
+          <span class="concept">classList.add</span>
+          <span class="concept">classList.remove</span>
+          <span class="concept">CSS Variables</span>
+          <span class="concept">CSS transitions</span>
+        </div>
+      </div>
+      <span class="task-arrow">↗</span>
+    </a>
+
+    <a class="task-card" href="./task04-image-gallery/task04-image-gallery.html">
+      <span class="task-num">TASK_04</span>
+      <div class="task-info">
+        <div class="task-title">Image Gallery</div>
+        <div class="task-desc">Interactive image gallery with dynamic rendering, click-to-preview lightbox, and category filtering.</div>
+        <div class="task-concepts">
+          <span class="concept">innerHTML</span>
+          <span class="concept">querySelectorAll</span>
+          <span class="concept">data attributes</span>
+          <span class="concept">event delegation</span>
+        </div>
+      </div>
+      <span class="task-arrow">↗</span>
+    </a>
+
+  </div>
+
+</div>
+</body>
+</html>
