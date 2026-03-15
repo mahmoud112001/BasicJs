@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="task01-style.css">
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- ── PROFILE CARD ── -->
+    <div class="profile-card" id="profileCard">
+      <div class="avatar" id="avatar">J</div>
+      <span class="profile-tag">// profile</span>
+      <h2 id="profileName">John Doe</h2>
+      <p id="profileBio">Web Developer</p>
+    </div>
+
+    <!-- ── EDIT CARD ── -->
+    <div class="edit-card">
+      <span class="edit-title">// edit profile</span>
+
+      <div class="field">
+        <label for="nameInput">Name</label>
+        <div class="input-row">
+          <input type="text" id="nameInput" placeholder="Enter new name..."/>
+          <button class="btn btn-yellow" id="nameBtn">Update</button>
+        </div>
+        <span class="err-msg" id="nameErr"></span>
+      </div>
+
+      <div class="field">
+        <label for="bioInput">Bio</label>
+        <div class="input-row">
+          <input type="text" id="bioInput" placeholder="Enter new bio..."/>
+          <button class="btn btn-yellow" id="bioBtn">Update</button>
+        </div>
+        <span class="err-msg" id="bioErr"></span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+<script src="./task01-script.js"></script>
+</body>
+</html>
