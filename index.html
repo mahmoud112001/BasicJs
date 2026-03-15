@@ -5,7 +5,399 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mahmoud Awad — Basic HTML, CSS & JS</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:      #07090f;
+      --surface: #0d1117;
+      --border:  #1a2030;
+      --card-bg: #0b0e18;
+
+      /* tri-color accent — HTML orange, CSS blue, JS yellow */
+      --html:    #e44d26;
+      --css:     #2965f1;
+      --js:      #f7df1e;
+      --accent:  #e44d26;   /* primary = HTML orange */
+      --accent2: #2965f1;   /* secondary = CSS blue  */
+      --accent3: #f7df1e;   /* tertiary = JS yellow  */
+
+      --text:    #dde3f0;
+      --muted:   #4a5270;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Background grid ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(228,77,38,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(41,101,241,0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Tri-color glow blob ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -180px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 500px;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(228,77,38,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 50%, rgba(41,101,241,0.07) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ══ HEADER ══════════════════════════════════ */
+    header {
+      padding: 80px 0 48px;
+      text-align: center;
+      animation: fadeDown 0.8s ease both;
+    }
+
+    /* tri-color badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .badge span {
+      padding: 5px 14px;
+      font-weight: 700;
+    }
+
+    .badge .b-html { background: rgba(228,77,38,0.15);  color: var(--html); border: 1px solid rgba(228,77,38,0.25);  border-right: none; }
+    .badge .b-css  { background: rgba(41,101,241,0.15); color: var(--css);  border: 1px solid rgba(41,101,241,0.25); border-left: none; border-right: none; }
+    .badge .b-js   { background: rgba(247,223,30,0.12); color: var(--js);   border: 1px solid rgba(247,223,30,0.25); border-left: none; }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .h-html { color: var(--html); }
+    .h-css  { color: var(--css);  }
+    .h-js   { color: var(--js);   }
+
+    .subtitle {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .divider {
+      width: 56px; height: 2px;
+      margin: 28px auto;
+      background: linear-gradient(90deg, var(--html), var(--css), var(--js));
+      border-radius: 2px;
+    }
+
+    /* ══ INFO BAR ════════════════════════════════ */
+    .info-bar {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+      animation: fadeUp 0.8s 0.2s ease both;
+      opacity: 0;
+      animation-fill-mode: both;
+    }
+
+    .info-item {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.82rem;
+      margin-bottom: 3px;
+    }
+
+    /* ══ SECTION LABEL ═══════════════════════════ */
+    .section-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: ''; flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ══ LABS GRID ═══════════════════════════════ */
+    .labs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+
+    /* ── Lab Card ── */
+    .lab-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 24px 48px;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      animation: fadeUp 0.6s ease both;
+      animation-fill-mode: both;
+    }
+
+    /* left accent bar — color per type */
+    .lab-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      transition: height 0.3s ease;
+    }
+
+    .lab-card.html-card::before { background: var(--html); }
+    .lab-card.css-card::before  { background: var(--css);  }
+    .lab-card.js-card::before   { background: var(--js);   }
+    .lab-card.mix-card::before  {
+      background: linear-gradient(to bottom, var(--html), var(--css), var(--js));
+    }
+
+    .lab-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .lab-card.html-card:hover { border-color: var(--html); box-shadow: 0 8px 32px rgba(228,77,38,0.08); }
+    .lab-card.css-card:hover  { border-color: var(--css);  box-shadow: 0 8px 32px rgba(41,101,241,0.08); }
+    .lab-card.js-card:hover   { border-color: var(--js);   box-shadow: 0 8px 32px rgba(247,223,30,0.08); }
+    .lab-card.mix-card:hover  { border-color: var(--muted); }
+
+    .lab-card:hover::before { height: 100%; }
+
+    /* card top row */
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .lab-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+    }
+
+    .lab-card.html-card .lab-number { color: var(--html); }
+    .lab-card.css-card  .lab-number { color: var(--css);  }
+    .lab-card.js-card   .lab-number { color: var(--js);   }
+    .lab-card.mix-card  .lab-number { color: var(--muted);}
+
+    /* tech pill */
+    .tech-pill {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      padding: 3px 8px;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .pill-html { background: rgba(228,77,38,0.12);  color: var(--html); border: 1px solid rgba(228,77,38,0.2);  }
+    .pill-css  { background: rgba(41,101,241,0.12); color: var(--css);  border: 1px solid rgba(41,101,241,0.2); }
+    .pill-js   { background: rgba(247,223,30,0.10); color: var(--js);   border: 1px solid rgba(247,223,30,0.2); }
+    .pill-mix  { background: rgba(255,255,255,0.04);color: var(--muted);border: 1px solid var(--border); }
+
+    .lab-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .lab-desc {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .lab-arrow {
+      position: absolute;
+      bottom: 20px; right: 20px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.25s, transform 0.25s;
+    }
+
+    .lab-card.html-card:hover .lab-arrow { color: var(--html); transform: translate(3px,-3px); }
+    .lab-card.css-card:hover  .lab-arrow { color: var(--css);  transform: translate(3px,-3px); }
+    .lab-card.js-card:hover   .lab-arrow { color: var(--js);   transform: translate(3px,-3px); }
+    .lab-card.mix-card:hover  .lab-arrow { color: var(--text); transform: translate(3px,-3px); }
+
+    /* Coming soon */
+    .sub-btn {
+      flex: 1;
+      text-align: center;
+      padding: 8px 0;
+      border-radius: 8px;
+      background: rgba(41,101,241,0.1);
+      color: #2965f1;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(41,101,241,0.2);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .sub-btn-js {
+      background: rgba(247,223,30,0.08);
+      color: #c9a800;
+      border-color: rgba(247,223,30,0.25);
+    }
+    .sub-btn-js:hover {
+      background: rgba(247,223,30,0.18) !important;
+    }
+    .sub-btn:hover {
+      background: rgba(41,101,241,0.2);
+      transform: translateY(-2px);
+    }
+
+    .lab-card.coming-soon {
+      opacity: 0.3;
+      pointer-events: none;
+      border-style: dashed;
+    }
+
+    /* stagger */
+    .lab-card:nth-child(1)  { animation-delay: 0.05s; }
+    .lab-card:nth-child(2)  { animation-delay: 0.12s; }
+    .lab-card:nth-child(3)  { animation-delay: 0.19s; }
+    .lab-card:nth-child(4)  { animation-delay: 0.26s; }
+    .lab-card:nth-child(5)  { animation-delay: 0.33s; }
+    .lab-card:nth-child(6)  { animation-delay: 0.40s; }
+    .lab-card:nth-child(7)  { animation-delay: 0.47s; }
+    .lab-card:nth-child(8)  { animation-delay: 0.54s; }
+    .lab-card:nth-child(9)  { animation-delay: 0.61s; }
+    .lab-card:nth-child(10) { animation-delay: 0.68s; }
+
+    /* ══ STATS ROW ═══════════════════════════════ */
+    .stats-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+      animation: fadeUp 0.8s 0.15s ease both;
+      animation-fill-mode: both;
+    }
+
+    .stat-chip {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 20px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-chip .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-html { background: var(--html); box-shadow: 0 0 6px var(--html); }
+    .dot-css  { background: var(--css);  box-shadow: 0 0 6px var(--css); }
+    .dot-js   { background: var(--js);   box-shadow: 0 0 6px var(--js); }
+
+    /* ══ FOOTER ══════════════════════════════════ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    footer a { text-decoration: none; }
+    footer a.l-html { color: var(--html); }
+    footer a.l-css  { color: var(--css);  }
+    footer a.l-js   { color: var(--js);   }
+    footer a:hover  { text-decoration: underline; }
+
+    /* ══ ANIMATIONS ══════════════════════════════ */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══ RESPONSIVE ══════════════════════════════ */
+    @media (max-width: 600px) {
+      .info-bar { gap: 24px; }
+      .stats-row { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
 
@@ -118,8 +510,8 @@
           <span class="lab-number">LAB_05</span>
           <span class="tech-pill pill-js">JS</span>
         </div>
-        <h2 class="lab-title">JavaScript Basics</h2>
-        <p class="lab-desc">Variables, data types, operators, conditions and loops fundamentals.</p>
+        <h2 class="lab-title">DOM Manipulation</h2>
+        <p class="lab-desc">Profile card, task list, theme switcher and image gallery — dynamic DOM interaction with events and CSS class manipulation.</p>
         <span class="lab-arrow">↗</span>
       </a>
 
