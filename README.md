@@ -35,11 +35,22 @@ BasicJs/
 │   ├── style.css       ← Stylesheet
 │   └── readme.md
 │
-└── lab4/
-    ├── Screenshots/    ← Exercise output screenshots
-    ├── JS-day-two/     ← Day two JS exercises folder
-    ├── index.html      ← JS Exercises UI (Arrays, Library, Dates, Strings, Todo)
-    ├── script.js       ← JavaScript logic
+├── lab4/
+│   ├── Screenshots/    ← Exercise output screenshots
+│   ├── JS-day-two/     ← Day two JS exercises folder
+│   ├── index.html      ← JS Exercises UI (Arrays, Library, Dates, Strings, Todo)
+│   ├── script.js       ← JavaScript logic
+│   └── README.md
+│
+└── lab5/
+    ├── lec notes/      ← Lecture notes and agenda
+    ├── screenshots-answer-before/ ← Original exercise screenshots
+    ├── task01-profile-card/  ← Profile Card (html + css + js)
+    ├── task02-task-list/     ← Task List (html + css + js)
+    ├── task03-theme-switcher/ ← Theme Switcher (html + css + js)
+    ├── task04-image-gallery/ ← Image Gallery (html + css + js)
+    ├── index.html      ← Lab landing page
+    ├── index-style.css
     └── README.md
 ```
 
@@ -167,6 +178,40 @@ BasicJs/
 
 ---
 
+### 🟣 Lab 05 — DOM Manipulation
+
+**Focus:** DOM interaction, dynamic rendering, event handling, CSS class manipulation
+
+| File | Description |
+|---|---|
+| `index.html` | Lab landing page — links to all 4 tasks |
+| `task01-profile-card/` | Update profile name & bio dynamically |
+| `task02-task-list/` | Full CRUD task manager with filters |
+| `task03-theme-switcher/` | 5 color themes using CSS Variables |
+| `task04-image-gallery/` | Dynamic gallery with lightbox |
+
+**Tasks:**
+
+| # | Task | Key Concepts |
+|---|---|---|
+| 01 | Profile Card | `getElementById`, `textContent`, `trim()`, `classList`, `keydown` |
+| 02 | Task List | `createElement`, `appendChild`, `filter()`, `Date.now()` IDs |
+| 03 | Theme Switcher | `classList.add/remove`, CSS Variables, smooth transitions |
+| 04 | Image Gallery | `innerHTML`, `querySelectorAll`, data attributes, event delegation |
+
+**Improvements from Original:**
+
+| Improvement | Details |
+|---|---|
+| Separated files | Each task split into `.html` + `.css` + `.js` |
+| Validation | Every input validated with inline error messages |
+| Toast feedback | Non-blocking success notifications |
+| Enter key support | All inputs submit on Enter |
+| `var` → `const`/`let` | Modern block-scoped variables |
+| `split(" ").join("")` → `.trim()` | Correct whitespace validation |
+
+---
+
 ## 🚀 How to Run
 
 **Locally:**
@@ -195,14 +240,14 @@ cd BasicJs
 
 ## 📊 Labs Comparison
 
-| | Lab 01 | Lab 02 | Lab 03 | Lab 04 |
-|---|---|---|---|---|
-| **Technology** | HTML | CSS | JavaScript | JavaScript |
-| **Focus** | Structure & Multimedia | Layout & Styling | Logic & Loops | Objects & Arrays |
-| **Pages / Files** | 3 pages | 2 pages | 1 + folder | 1 + folder |
-| **Main concept** | HTML elements | CSS layout | Switch, loops, DOM | Objects, dates, strings |
-| **Bonus** | Image map | Space navbar | Pattern printing | Deep copy / Clone |
-| **README** | ✅ | ✅ | ✅ | ✅ |
+| | Lab 01 | Lab 02 | Lab 03 | Lab 04 | Lab 05 |
+|---|---|---|---|---|---|
+| **Technology** | HTML | CSS | JavaScript | JavaScript | JavaScript |
+| **Focus** | Structure & Multimedia | Layout & Styling | Logic & Loops | Objects & Arrays | DOM Manipulation |
+| **Pages / Files** | 3 pages | 2 pages | 1 + folder | 1 + folder | 4 tasks + index |
+| **Main concept** | HTML elements | CSS layout | Switch, loops, DOM | Objects, dates, strings | DOM, events, classes |
+| **Bonus** | Image map | Space navbar | Pattern printing | Deep copy / Clone | Image gallery |
+| **README** | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ---
 
