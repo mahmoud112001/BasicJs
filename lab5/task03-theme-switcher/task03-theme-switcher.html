@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Theme Switcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+ <link rel="stylesheet" href="./task03-style.css">
+</head>
+<body class="theme-dark">
+
+<div class="wrapper">
+
+  <!-- Content -->
+  <div class="content-card" id="content">
+    <span class="tag">// preview</span>
+    <h1>Welcome</h1>
+    <p>This is a theme switcher demo. Each theme changes the color palette of the entire page — background, surface, borders, text, and accent color.</p>
+    <div class="theme-badge">
+      <span class="badge-dot"></span>
+      <span id="activeName">Dark Theme</span>
+    </div>
+  </div>
+
+  <!-- Theme Switcher -->
+  <div class="themes-card">
+    <span class="themes-label">// choose theme</span>
+    <div class="themes-grid">
+
+      <button class="theme-btn" id="btn-dark" onclick="setTheme('dark', 'Dark Theme', this)">
+        <div class="swatch swatch-dark"></div>
+        <span>Dark</span>
+      </button>
+
+      <button class="theme-btn" id="btn-light" onclick="setTheme('light', 'Light Theme', this)">
+        <div class="swatch swatch-light"></div>
+        <span>Light</span>
+      </button>
+
+      <button class="theme-btn" id="btn-ocean" onclick="setTheme('ocean', 'Ocean Theme', this)">
+        <div class="swatch swatch-ocean"></div>
+        <span>Ocean</span>
+      </button>
+
+      <button class="theme-btn" id="btn-sunset" onclick="setTheme('sunset', 'Sunset Theme', this)">
+        <div class="swatch swatch-sunset"></div>
+        <span>Sunset</span>
+      </button>
+
+      <button class="theme-btn" id="btn-forest" onclick="setTheme('forest', 'Forest Theme', this)">
+        <div class="swatch swatch-forest"></div>
+        <span>Forest</span>
+      </button>
+
+    </div>
+  </div>
+
+</div>
+<script src="./task03-script.js"></script>
+
+</body>
+</html>
