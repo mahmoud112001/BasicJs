@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="./task04-style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+  <div class="header">
+    <span class="tag">// image gallery</span>
+    <h1>Gallery</h1>
+  </div>
+
+  <div class="gallery-card">
+    <div class="img-wrap">
+      <img id="mainImage" src="" alt=""/>
+      <div class="img-caption" id="caption"></div>
+      <button class="arrow-btn prev" id="prevBtn">&#8592;</button>
+      <button class="arrow-btn next" id="nextBtn">&#8594;</button>
+    </div>
+
+    <div class="bottom-bar">
+      <span class="position-text" id="position"></span>
+      <div class="dots" id="dots"></div>
+      <span class="hint"><span class="kbd">←</span> <span class="kbd">→</span></span>
+    </div>
+  </div>
+
+</div>
+
+<script src="./task04-script.js"></script>
+</body>
+</html>
