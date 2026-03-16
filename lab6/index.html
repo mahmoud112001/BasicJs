@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lab 06 — Advanced DOM & Fetch API</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:      #0d1117;
+      --card:    #1c2128;
+      --border:  #30363d;
+      --accent:  #f7df1e;
+      --text:    #e6edf3;
+      --muted:   #8b949e;
+      --radius:  14px;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+    }
+
+    .wrapper { max-width: 700px; margin: 0 auto; }
+
+    /* ── HEADER ── */
+    .header { margin-bottom: 40px; }
+    .header .tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .header p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── TASKS ── */
+    .tasks { display: flex; flex-direction: column; gap: 12px; }
+
+    .task-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    /* accent left bar on hover */
+    .task-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .task-card:hover {
+      border-color: rgba(247,223,30,0.35);
+      transform: translateX(4px);
+    }
+    .task-card:hover::before { opacity: 1; }
+
+    /* number badge */
+    .task-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--accent);
+      background: rgba(247,223,30,0.08);
+      border: 1px solid rgba(247,223,30,0.2);
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* text */
+    .task-info { flex: 1; }
+    .task-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .task-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* concepts */
+    .task-concepts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 8px;
+    }
+    .concept {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    /* arrow */
+    .task-arrow {
+      font-size: 1.1rem;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .task-card:hover .task-arrow {
+      color: var(--accent);
+      transform: translate(3px, -3px);
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <span class="tag">// lab_06 — advanced DOM & fetch API</span>
+    <h1>Advanced DOM & Fetch API</h1>
+    <p>Five exercises covering dynamic DOM creation, keyboard events, event delegation, JSON manipulation, and fetching data with the Fetch API.</p>
+  </div>
+
+  <!-- Tasks -->
+  <div class="tasks">
+
+    <a class="task-card" href="./task01-Card-Builder/Q1.html">
+      <span class="task-num">TASK_01</span>
+      <div class="task-info">
+        <div class="task-title">Card Builder</div>
+        <div class="task-desc">Dynamically create, number and delete cards using DOM methods. Includes validation, toast feedback, and Clear All.</div>
+        <div class="task-concepts">
+          <span class="concept">createElement</span>
+          <span class="concept">appendChild</span>
+          <span class="concept">insertAdjacentElement</span>
+          <span class="concept">card.remove()</span>
+          <span class="concept">padStart</span>
+        </div>
+      </div>
+      <span class="task-arrow">↗</span>
+    </a>
+
+    <a class="task-card" href="./task02-Keyboard-Events/Q2.html">
+      <span class="task-num">TASK_02</span>
+      <div class="task-info">
+        <div class="task-title">Keyboard Events</div>
+        <div class="task-desc">Track every keystroke in real time — key name, key code, modifier keys, char/word count, and a live event log with timestamps.</div>
+        <div class="task-concepts">
+          <span class="concept">keydown event</span>
+          <span class="concept">event.key</span>
+          <span class="concept">event.code</span>
+          <span class="concept">event.shiftKey</span>
+          <span class="concept">toLocaleTimeString</span>
+        </div>
+      </div>
+      <span class="task-arrow">↗</span>
+    </a>
+
+    <a class="task-card" href="./task03-Event-Delegation/Q3.html">
+      <span class="task-num">TASK_03</span>
+      <div class="task-info">
+        <div class="task-title">Event Delegation — Todo List</div>
+        <div class="task-desc">One click listener on the parent handles all list item toggles and deletes. Includes filters, stats counter, and clear done.</div>
+        <div class="task-concepts">
+          <span class="concept">event delegation</span>
+          <span class="concept">closest('li')</span>
+          <span class="concept">classList.toggle</span>
+          <span class="concept">data-action</span>
+          <span class="concept">filter()</span>
+        </div>
+      </div>
+      <span class="task-arrow">↗</span>
+    </a>
+
+    <a class="task-card" href="./task04-JSON-Practice/Q4.html">
+      <span class="task-num">TASK_04</span>
+      <div class="task-info">
+        <div class="task-title">JSON Practice</div>
+        <div class="task-desc">Stringify and parse a users array, render as a table, add/delete users, live search, and toggle dark/light theme with cookie persistence.</div>
+        <div class="task-concepts">
+          <span class="concept">JSON.stringify</span>
+          <span class="concept">JSON.parse</span>
+          <span class="concept">document.cookie</span>
+          <span class="concept">CSS Variables</span>
+          <span class="concept">event delegation</span>
+        </div>
+      </div>
+      <span class="task-arrow">↗</span>
+    </a>
+
+    <a class="task-card" href="./task05-Fetch-API/Q5.html">
+      <span class="task-num">TASK_05</span>
+      <div class="task-info">
+        <div class="task-title">Fetch API — Users</div>
+        <div class="task-desc">Load users from users.json using async/await Fetch API. Renders user cards with avatar, role, status badge, and supports live search and filtering.</div>
+        <div class="task-concepts">
+          <span class="concept">fetch()</span>
+          <span class="concept">async / await</span>
+          <span class="concept">try / catch</span>
+          <span class="concept">res.ok</span>
+          <span class="concept">res.json()</span>
+        </div>
+      </div>
+      <span class="task-arrow">↗</span>
+    </a>
+
+  </div>
+</div>
+</body>
+</html>
