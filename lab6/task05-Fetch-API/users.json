@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Mahmoud Awad",
+    "email": "mahmoudawad112001@gmail.com",
+    "role": "Full-Stack Developer",
+    "department": "Engineering",
+    "location": "Alexandria, Egypt",
+    "status": "active",
+    "joined": "2026-01-15"
+  },
+  {
+    "id": 2,
+    "name": "Sara Ahmed",
+    "email": "sara.ahmed@email.com",
+    "role": "UI/UX Designer",
+    "department": "Design",
+    "location": "Cairo, Egypt",
+    "status": "active",
+    "joined": "2025-11-20"
+  },
+  {
+    "id": 3,
+    "name": "Omar Mosleh",
+    "email": "omarmosleh@mail.com",
+    "role": "Instructor",
+    "department": "Education",
+    "location": "Cairo, Egypt",
+    "status": "active",
+    "joined": "2024-03-01"
+  },
+  {
+    "id": 4,
+    "name": "Mostafa Hassan",
+    "email": "mostafa.hassan@email.com",
+    "role": "Backend Developer",
+    "department": "Engineering",
+    "location": "Giza, Egypt",
+    "status": "active",
+    "joined": "2025-09-10"
+  },
+  {
+    "id": 5,
+    "name": "Nour El-Din",
+    "email": "nour.eldin@email.com",
+    "role": "Frontend Developer",
+    "department": "Engineering",
+    "location": "Alexandria, Egypt",
+    "status": "active",
+    "joined": "2026-01-20"
+  },
+  {
+    "id": 6,
+    "name": "Layla Ibrahim",
+    "email": "layla.ibrahim@email.com",
+    "role": "Data Analyst",
+    "department": "Analytics",
+    "location": "Cairo, Egypt",
+    "status": "inactive",
+    "joined": "2025-07-05"
+  },
+  {
+    "id": 7,
+    "name": "Youssef Khaled",
+    "email": "youssef.khaled@email.com",
+    "role": "DevOps Engineer",
+    "department": "Engineering",
+    "location": "Mansoura, Egypt",
+    "status": "active",
+    "joined": "2025-06-18"
+  },
+  {
+    "id": 8,
+    "name": "Hana Samir",
+    "email": "hana.samir@email.com",
+    "role": "Project Manager",
+    "department": "Management",
+    "location": "Cairo, Egypt",
+    "status": "active",
+    "joined": "2024-12-01"
+  },
+  {
+    "id": 9,
+    "name": "Karim Farouk",
+    "email": "karim.farouk@email.com",
+    "role": "Mobile Developer",
+    "department": "Engineering",
+    "location": "Tanta, Egypt",
+    "status": "inactive",
+    "joined": "2025-04-22"
+  },
+  {
+    "id": 10,
+    "name": "Dina Wael",
+    "email": "dina.wael@email.com",
+    "role": "QA Engineer",
+    "department": "Quality",
+    "location": "Alexandria, Egypt",
+    "status": "active",
+    "joined": "2025-10-30"
+  }
+]
