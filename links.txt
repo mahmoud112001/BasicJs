@@ -5,6 +5,7 @@ Repo:
 4- Repo (lab 03): https://github.com/mahmoud112001/BasicJs/tree/main/lab3
 5- Repo (lab 04): https://github.com/mahmoud112001/BasicJs/tree/main/lab4
 6- Repo (lab 05): https://github.com/mahmoud112001/BasicJs/tree/main/lab5
+7- Repo (lab 06): https://github.com/mahmoud112001/BasicJs/tree/main/lab6
 
 Depolyment: 
 
@@ -15,6 +16,7 @@ Depolyment:
 5- live (lab 03 ) : https://mahmoud112001.github.io/BasicJs/lab3/index.html
 6- live (lab 04 ) : https://mahmoud112001.github.io/BasicJs/lab4/index.html
 7- live (lab 05 ) : https://mahmoud112001.github.io/BasicJs/lab5/index.html
+8- live (lab 06 ) : https://mahmoud112001.github.io/BasicJs/lab6/index.html
 
 Records:
 
@@ -23,6 +25,7 @@ Records:
 3- rec (lab 03) :https://screenrec.com/share/F13oIHisKT
 4- rec (lab 04) :https://screenrec.com/share/bCAuTyVgnc
 5- rec (lab 05) :https://screenrec.com/share/4SkrNxuzlJ
+6- rec (lab 06) :https://screenrec.com/share/3hYpWqPNHd
 
 personal links:
 
