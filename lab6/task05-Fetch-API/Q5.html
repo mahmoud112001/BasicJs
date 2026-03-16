@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ex5 - Fetch Users</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- Header -->
+    <div class="header">
+      <div>
+        <span class="tag">// fetch API</span>
+        <h1>Fetch Users</h1>
+        <p>Load users from <code>users.json</code> using the Fetch API.</p>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-card">
+      <div class="controls-row">
+        <button class="btn-yellow" id="loadBtn">⬇ Load Users</button>
+        <button class="btn-ghost" id="clearBtn" disabled>Clear</button>
+        <input type="text" id="searchInput" placeholder="🔍 Search name, role, department..." disabled/>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters" id="filters" style="display:none;">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="active">Active</button>
+        <button class="filter" data-filter="inactive">Inactive</button>
+      </div>
+    </div>
+
+    <!-- Status bar -->
+    <div class="status-bar" id="statusBar" style="display:none;">
+      <span id="statusMsg"></span>
+      <div class="pills">
+        <span class="pill" id="totalPill"></span>
+        <span class="pill active" id="activePill"></span>
+        <span class="pill inactive" id="inactivePill"></span>
+      </div>
+    </div>
+
+    <!-- Loading skeleton -->
+    <div id="skeleton" style="display:none;">
+      <div class="skeleton-card" style="--d:0.05s"></div>
+      <div class="skeleton-card" style="--d:0.1s"></div>
+      <div class="skeleton-card" style="--d:0.15s"></div>
+    </div>
+
+    <!-- Users grid -->
+    <div class="users-grid" id="usersGrid"></div>
+
+    <!-- Empty state -->
+    <div class="empty" id="empty">
+      <span>👤</span>
+      No users match your search.
+    </div>
+
+    <!-- Error state -->
+    <div class="error-state" id="errorState">
+      <span>⚠️</span>
+      <p id="errorMsg"></p>
+      <button class="btn-yellow" onclick="loadUsers()">Retry</button>
+    </div>
+
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
