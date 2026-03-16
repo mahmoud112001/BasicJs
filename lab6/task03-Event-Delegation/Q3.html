@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ex3 - Event Delegation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <div class="header">
+      <span class="tag">// event delegation</span>
+      <h1>Todo List</h1>
+      <p>Click any item to toggle done. One event listener handles all items.</p>
+    </div>
+
+    <!-- Form -->
+    <div class="form-card">
+      <form id="form">
+        <div class="input-row">
+          <input type="text" id="todo" placeholder="Add a new todo..."/>
+          <button type="submit" class="btn-add">+ Add</button>
+        </div>
+        <span class="err-msg" id="err"></span>
+      </form>
+    </div>
+
+    <!-- Stats + filters -->
+    <div class="toolbar">
+      <div class="stats">
+        <span class="pill" id="totalPill">Total: 0</span>
+        <span class="pill active" id="donePill">Done: 0</span>
+      </div>
+      <div class="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="active">Active</button>
+        <button class="filter" data-filter="done">Done</button>
+      </div>
+      <button class="btn-clear" id="clearDoneBtn">Clear Done</button>
+    </div>
+
+    <!-- List -->
+    <ul id="list"></ul>
+
+    <!-- Empty state -->
+    <div class="empty show" id="empty">
+      <span>📋</span>
+      No todos yet — add one above!
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
