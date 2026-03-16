@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ex4 - JSON Practice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- Header -->
+    <div class="header">
+      <div>
+        <span class="tag">// json practice</span>
+        <h1>JSON Practice</h1>
+        <p>Stringify → Parse → Render. Add, search and delete users.</p>
+      </div>
+      <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+
+    <!-- JSON viewer -->
+    <div class="section-card" id="jsonSection" style="display:none;">
+      <div class="section-head">
+        <span class="tag">// json output</span>
+        <button class="btn-ghost" id="copyBtn">Copy JSON</button>
+      </div>
+      <pre id="jsonOut"></pre>
+    </div>
+
+    <!-- Add user form -->
+    <div class="form-card">
+      <span class="tag">// add user</span>
+      <div class="form-row">
+        <div class="field">
+          <input type="text" id="nameInput" placeholder="Name"/>
+          <span class="err-msg" id="nameErr"></span>
+        </div>
+        <div class="field">
+          <input type="text" id="emailInput" placeholder="Email"/>
+          <span class="err-msg" id="emailErr"></span>
+        </div>
+        <button class="btn-add" id="addBtn">+ Add</button>
+      </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <input type="text" id="searchInput" placeholder="🔍 Search by name or email..." class="search-input"/>
+      <button class="btn-yellow" id="runBtn">Run JSON</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <span class="pill" id="totalPill">Total: 0</span>
+      <span class="pill" id="shownPill"></span>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap">
+      <table id="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div class="empty" id="empty">
+        <span>👤</span>
+        No users found.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
