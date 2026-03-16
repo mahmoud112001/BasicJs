@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex2 - Keyboard Events</title>
+    <style>
+      body { font-family: system-ui, Arial; padding: 16px; }
+      pre { background: #f6f6f6; padding: 12px; border-radius: 10px; }
+    </style>
+  </head>
+  <body>
+    <h1>Keyboard Events</h1>
+    <input id="text" placeholder="Type here..." />
+    <pre id="out">Start typing...</pre>
+<script>
+  const input = document.querySelector('#text');
+  const out = document.querySelector('#out');
+
+  input.addEventListener('keyup', handleKeyUp);
+
+  function handleKeyUp(event) {
+    var pressedKey = event.key;
+    var currentValue = input.value;
+
+out.textContent = "Key: " + pressedKey + "\nValue: " + currentValue;
+
+  
+    }
+</script>
+  
+  </body>
+</html>

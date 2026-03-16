@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .parent {
+        border: 2px solid black;
+        padding: 10px;
+      }
+
+      .child {
+        border: 2px solid blue;
+        padding: 10px;
+        margin-top: 10px;
+      }
+
+      .grand-child {
+        border: 2px solid green;
+        padding: 10px;
+        margin-top: 10px;
+      }
+
+      .cards {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .card{
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- before begin -->
+    <!-- <div class="container"> -->
+    <!-- before begin -->
+    <!-- <div class="diva">a</div>
+            <div class="divb">b</div>
+            <div class="divc">c</div>
+            <div class="divd">d</div> -->
+    <!-- beforeend -->
+    <!-- </div> -->
+    <!-- afterend -->
+
+    <!-- <button id="myButton" onclick="alert('Button Clicked!')">
+            Click Me
+        </button>
+        <button id="myButton2">click me 2</button>
+        <select name="country" id="countrySelect" onchange="changeHandler(event)">
+            <option value="us">United States</option>
+            <option value="ca">Canada</option>
+            <option value="mx">Mexico</option>
+        </select>
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN2z0ERwXQUqH29urPuzWueLXKhJAY6SMyAA&s" alt="Dog" id="dog-image">
+
+        <a href="https://www.google.com" onclick="return false;">Go to Google</a>
+ -->
+
+    <!-- <a href="https://www.facebook.com" id="facebook" target="_blank">facebook</a> -->
+    <!-- create simple form -->
+    <!-- <form id="simpleForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <input type="submit" id="submit" value="Submit">
+        </form> -->
+
+    <!-- <div class="parent">
+            Parent Content
+            <div class="child">
+                Child Content
+                <div class="grand-child">
+                    Grand Child Content
+                </div>
+            </div>
+        </div> -->
+
+    <!-- <ul id="delegation-ul">
+            <li id="item-a">Item 1</li>
+            <li id="item-b">Item 2</li>
+            <li id="item-c">Item 3</li>
+            <a href="https://www.facebook.com" onclick="return false;"> google</a>
+            <a href="#" onclick="return false;"> facebook</a>
+            <br>
+            <span>ibrahim</span>
+        </ul> -->
+
+        <!-- <div class="cards">
+
+        </div> -->
+
+
+
+
+    <script>
+      // var button2 = document.getElementById('myButton2');
+      //     button2.onclick = function() {
+      //         alert('Button 2 Clicked!');
+      //     };
+
+      // function changeHandler(event) {
+      //     alert('Selected country: ' + event.target.value);
+      // }
+
+      // var dogImage = document.getElementById('dog-image');
+      // dogImage.addEventListener('mouseenter', function() {
+      //     dogImage.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdgwlLnfdM75IVP2P4kGFgQmJcQMkJEE77RA&s';
+      // });
+      // dogImage.addEventListener('mouseleave', function() {
+      //     dogImage.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN2z0ERwXQUqH29urPuzWueLXKhJAY6SMyAA&s';
+      // });
+
+      // var nameInput = document.getElementById('name');
+      // nameInput.addEventListener('keydown', function(event) {
+      //     // console.log(event)
+      //     console.log(event.key);
+      //     console.log( event.code);
+      // });
+      // nameInput.addEventListener('blur', function(event) {
+      //     console.log(event.target.value);
+      // });
+
+      // var container = document.querySelector('.container');
+      // var diva = document.querySelector('.diva');
+      // var divb = document.querySelector('.divb');
+      // var divc = document.querySelector('.divc');
+      // var divd = document.querySelector('.divd');
+      // var myNewDiv = document.createElement('div')
+      // myNewDiv.textContent = 'Hello this is from JS';
+
+      // container.style.border = '4px solid black';
+      // diva.style.border = '2px solid red';
+      // divb.style.border = '2px solid blue';
+      // divc.style.border = '2px solid green';
+      // divd.style.border = '2px solid orange';
+
+      // container.insertAdjacentElement('afterend', myNewDiv); // afterbegin, beforebegin, beforeend, afterend
+      // divc.before(myNewDiv);
+
+      // var parentDiv = document.querySelector('.parent');
+      // var childDiv = document.querySelector('.child');
+      // var grandChildDiv = document.querySelector('.grand-child');
+
+      // parentDiv.addEventListener('click', function(e) {
+      //     console.log('Parent Div Clicked');
+      //     e.stopPropagation();
+      // });
+      // childDiv.addEventListener('click', function(e) {
+      //     console.log('Child Div Clicked');
+      //     e.stopPropagation();
+      // });
+      // grandChildDiv.addEventListener('click', function(e) {
+      //     e.stopPropagation();
+      //     console.log(' grand Child Div Clicked');
+      // });
+
+      // var delegationUl = document.getElementById('delegation-ul');
+      // delegationUl.addEventListener('click', function(e) {
+      //     // console.log("this id: " + this.id);
+      //     console.log(e.target)
+      //     if(e.target.tagName === "LI") {
+      //         console.log('List item ' + e.target.id + ' clicked!');
+      //         console.log('Event target id: ' + e.target.id);
+      //     }
+      // });
+
+      // var simpleForm = document.getElementById('simpleForm');
+      // var inputName = document.getElementById('name');
+      // simpleForm.addEventListener('submit', function(event) {
+      //     event.preventDefault();
+      //     // console.log('Form submitted! Name: ' + inputName.value);
+      //     alert('Form submitted! Name: ' + inputName.value);
+      // });
+
+      // var facebookLink = document.getElementById('facebook');
+      // facebookLink.addEventListener('click', function(event) {
+      //     event.preventDefault();
+      //     alert('Going to !' + facebookLink.href);
+      // });
+
+      // function sayHI() {
+      //     console.log('Hello from Omar');
+      //     console.log(this)
+      // }
+
+      //    var omar = {
+      //     name: 'Omar',
+      //     age: 30,
+      //     sayHI: sayHI
+      //    };
+      //    var sara = {
+      //     name: 'Sara',
+      //     age: 25,
+      //     sayHI: sayHI
+      //    };
+
+      //     // this refers to the object that called the method -CALLER-
+      //     omar.sayHI(); // omar object
+      //     sara.sayHI(); // sara object
+      //     sayHI(); // window object in browsers
+
+    //   let users = [
+    //     {
+    //       id: 1,
+    //       name: "Alex",
+    //       email: "alex@email.com",
+    //     },
+    //     {
+    //       id: 2,
+    //       name: "Sara",
+    //       email: "sara@email.com",
+    //     },
+    //     {
+    //       id: 3,
+    //       name: "Omar",
+    //       email: "omarmosleh@mail.com",
+    //     },
+    //   ];
+
+    //   var usersJson = JSON.stringify(users, null, 2);
+    //   console.log(users[0].name);
+    //   console.log(usersJson);
+    //   var parsedUsers = JSON.parse(usersJson);
+    //   console.log(parsedUsers[0].email);
+
+        //  0>1>2>3>4
+        
+
+        // var cardsContainer = document.querySelector('.cards');
+
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('GET', 'users.json', true);
+        // xhr.onreadystatechange = function() {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         try {
+        //             var users = JSON.parse(xhr.responseText);
+        //             console.log(users);
+        //             users.forEach(function(user){
+        //                 var card = document.createElement('div');
+        //                 card.className = 'card';
+        //                 card.innerHTML = '<h2>' + user.name + '</h2><p>' + user.email + '</p>';
+        //                 cardsContainer.appendChild(card);
+        //             });
+                    
+        //         } catch (error) {
+        //             console.error('Error parsing JSON:', error);
+        //         }
+        //     }
+        // };
+        
+        // xhr.send();
+
+
+        // try {
+        //     var x = 10 + y;
+        // } catch (error) {
+        //     console.error('An error occurred: ', error.message);
+        // }
+        // console.log('Script continues...');
+
+
+        try {
+            let x = 10 /0;
+            if(!isFinite(x)) {
+                throw new Error('Division by zero is not allowed.');
+            }
+            console.log("Hello ahmed ")
+        } catch (error) {
+            console.error("expected error caught: " + error.message);
+        } finally {
+            console.log('This will always run.');
+        }
+
+        console.log("hello again")
+      
+
+
+    </script>
+  </body>
+</html>

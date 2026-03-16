@@ -1,0 +1,67 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex5 - Fetch users.json</title>
+    <style>
+      body { font-family: system-ui, Arial; padding: 16px; }
+      .error { color: #b00020; }
+      .user { border: 1px solid #ddd; border-radius: 10px; padding: 10px; margin: 10px 0; }
+    </style>
+  </head>
+  <body>
+    <h1>Fetch Users</h1>
+    <button id="load">Load Users</button>
+    <div id="status"></div>
+    <div id="users"></div>
+
+    <script>
+      const loadBtn = document.querySelector('#load');
+      const statusEl = document.querySelector('#status');
+      const usersEl = document.querySelector('#users');
+
+      loadBtn.addEventListener('click', async () => {
+        statusEl.textContent = 'Loading...';
+        statusEl.className = '';
+        usersEl.innerHTML = '';
+    try {
+      const res = await fetch('./users.json');
+
+      if (!res.ok) {
+        throw new Error("Request failed with status ");
+      }
+
+      const data = await res.json();
+
+      renderUsers(data);
+      statusEl.textContent = 'successfly we loaded the users ';
+    } 
+    catch (err) {
+          statusEl.textContent = 'Failed to load users.';
+          statusEl.className = 'error';
+          console.error(err);
+        }
+      });
+
+
+        function renderUsers(users) {
+    users.forEach(user => {
+      var userDiv = document.createElement('div');
+      userDiv.className = 'user';
+
+      var name = document.createElement('h3');
+      name.textContent = user.name;
+
+      var email = document.createElement('p');
+      email.textContent = user.email;
+
+      userDiv.append(name, email);
+      usersEl.appendChild(userDiv);
+    });
+  }
+
+    </script>
+  </body>
+</html>

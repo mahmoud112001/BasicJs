@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex1 - Card Builder</title>
+    <style>
+      body { font-family: system-ui, Arial; padding: 16px; }
+      #cards { display: grid; gap: 12px; margin-top: 12px; }
+      .card { border: 1px solid #ddd; border-radius: 10px; padding: 12px; }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; }
+      button { cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <h1>Card Builder</h1>
+
+    <div class="row">
+      <input id="title" placeholder="Title" />
+      <input id="message" placeholder="Message" />
+      <button id="addBtn">Add Card</button>
+    </div>
+
+    <section id="cards"></section>
+
+    <script>
+        const titleInput = document.querySelector('#title');
+        const messageInput = document.querySelector('#message');
+        const addBtn = document.querySelector('#addBtn');
+        const cardsContainer = document.querySelector('#cards');
+      
+        addBtn.addEventListener('click', handleAddCard);
+      
+
+
+        function handleAddCard() {
+          var titleText = titleInput.value.split(" ").join("");
+          var messageText = messageInput.value.split(" ").join("");
+          var titleIsNum  = titleText /0 ;
+          var messageIsNum = messageText /0;
+         
+          console.log('Add button clicked');
+          console.log('Title:', titleInput.value);
+          console.log('Message:', messageInput.value);
+
+            if (titleText === '' || messageText === '') {
+            alert('Inputs are empty — card not created');
+            return;
+          }
+
+         else  if (titleIsNum == Infinity || messageIsNum == Infinity) {
+            alert('Inputs are Numbers — card not created');
+            return;
+          }
+      
+          var cardElement = createCard(titleInput.value, messageInput.value);
+          cardsContainer.insertAdjacentElement('beforeend', cardElement);
+      
+          clearInputs();
+        }
+
+        
+      
+        function createCard(title, message) {
+          var card = document.createElement('div');
+          card.className = 'card';
+      
+          var cardTitle = document.createElement('h3');
+          cardTitle.textContent = title;
+      
+          var cardMessage = document.createElement('p');
+          cardMessage.textContent = message;
+      
+          var deleteBtn = document.createElement('button');
+          deleteBtn.textContent = 'Delete';
+      
+          deleteBtn.addEventListener('click', () => {
+            console.log('Card deleted:', title);
+            card.remove();
+          });
+      
+          card.append(cardTitle, cardMessage, deleteBtn);
+          return card;
+        }
+      
+        function clearInputs() {
+          titleInput.value = '';
+          messageInput.value = '';
+          console.log('Inputs cleared');
+        }
+      </script>
+      
+  </body>
+</html>

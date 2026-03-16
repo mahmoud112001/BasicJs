@@ -1,0 +1,62 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex3 - Event Delegation</title>
+    <style>
+      body { font-family: system-ui, Arial; padding: 16px; }
+      li { cursor: pointer; padding: 6px 10px; }
+      .done { text-decoration: line-through; opacity: 0.6; }
+    </style>
+  </head>
+  <body>
+    <h1>Todo</h1>
+
+    <form id="form">
+      <input id="todo" placeholder="New todo" required />
+      <button>Add</button>
+    </form>
+
+    <ul id="list"></ul>
+
+   <script>
+  const form = document.querySelector('#form');
+  const todoInput = document.querySelector('#todo');
+  const list = document.querySelector('#list');
+
+  form.addEventListener('submit', handleFormSubmit);
+  list.addEventListener('click', handleListClick);
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+
+    var todoTextVal = todoInput.value.split(" ").join("");
+    var todoNumVal = todoInput.value / 0 ;
+    if (todoTextVal=== '') {
+   return alert('the input is empty please enter a todo');
+        
+    }
+    else if (todoNumVal == Infinity) {
+      return  alert('the input is a number please enter a todo');
+        
+    }
+
+
+
+    var li = document.createElement('li');
+    li.textContent = todoInput.value;
+
+    list.insertAdjacentElement('beforeend', li);
+    todoInput.value = '';
+  }
+
+  function handleListClick(event) {
+    var clickedItem = event.target.closest('li');
+    clickedItem.classList.toggle('done');
+  }
+</script>
+
+  </body>
+</html>
