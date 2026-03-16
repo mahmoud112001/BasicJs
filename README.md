@@ -42,15 +42,26 @@ BasicJs/
 │   ├── script.js       ← JavaScript logic
 │   └── README.md
 │
-└── lab5/
-    ├── lec notes/      ← Lecture notes and agenda
-    ├── screenshots-answer-before/ ← Original exercise screenshots
-    ├── task01-profile-card/  ← Profile Card (html + css + js)
-    ├── task02-task-list/     ← Task List (html + css + js)
-    ├── task03-theme-switcher/ ← Theme Switcher (html + css + js)
-    ├── task04-image-gallery/ ← Image Gallery (html + css + js)
-    ├── index.html      ← Lab landing page
-    ├── index-style.css
+├── lab5/
+│   ├── lec notes/      ← Lecture notes and agenda
+│   ├── screenshots-answer-before/ ← Original exercise screenshots
+│   ├── task01-profile-card/  ← Profile Card (html + css + js)
+│   ├── task02-task-list/     ← Task List (html + css + js)
+│   ├── task03-theme-switcher/ ← Theme Switcher (html + css + js)
+│   ├── task04-image-gallery/ ← Image Gallery (html + css + js)
+│   ├── index.html      ← Lab landing page
+│   ├── index-style.css
+│   └── README.md
+│
+└── lab6/
+    ├── Lecture-notes/              ← Lecture notes & agenda
+    ├── oldAnswerScreenshots/       ← Original exercise screenshots
+    ├── task01-Card Builder/        ← Card Builder (html + css + js)
+    ├── task02-Keyboard-Events/     ← Keyboard Events (html + css + js)
+    ├── task03-Event-Delegation/    ← Event Delegation (html + css + js)
+    ├── task04-JSON-Practice/       ← JSON Practice (html + css + js)
+    ├── task05-Fetch-API/           ← Fetch API + users.json (html + css + js)
+    ├── index.html                  ← Lab landing page
     └── README.md
 ```
 
@@ -212,6 +223,45 @@ BasicJs/
 
 ---
 
+### 🔵 Lab 06 — Advanced DOM & Fetch API
+
+**Focus:** Dynamic DOM creation, keyboard events, event delegation, JSON, Fetch API
+
+| File | Description |
+|---|---|
+| `index.html` | Lab landing page — links to all 5 tasks |
+| `task01-Card Builder/` | Dynamically create, number and delete cards |
+| `task02-Keyboard-Events/` | Track keystrokes with live log and modifier detection |
+| `task03-Event-Delegation/` | Todo list using one listener on parent element |
+| `task04-JSON-Practice/` | Stringify, parse, add/delete users, theme toggle |
+| `task05-Fetch-API/` | Load users.json with async/await, search and filter |
+
+**Tasks:**
+
+| # | Task | Key Concepts |
+|---|---|---|
+| 01 | Card Builder | `createElement`, `appendChild`, `remove()`, `padStart` |
+| 02 | Keyboard Events | `keydown`, `event.key`, `event.code`, modifier keys |
+| 03 | Event Delegation | `closest()`, `data-action`, one listener handles all |
+| 04 | JSON Practice | `JSON.stringify`, `JSON.parse`, `document.cookie`, CSS Variables |
+| 05 | Fetch API | `fetch()`, `async/await`, `try/catch`, `res.ok`, `res.json()` |
+
+**Improvements from Original:**
+
+| Improvement | Details |
+|---|---|
+| Separated files | Each task: `.html` + `.css` + `.js` |
+| Validation | All inputs validated with inline error messages |
+| `alert()` removed | Replaced with inline errors and toast notifications |
+| `var` → `const`/`let` | Modern block-scoped variables |
+| `keyup` → `keydown` | More responsive keyboard detection |
+| Null guard on delegation | `if (!li) return` prevents crash |
+| Error with status code | `status 404 (Not Found)` instead of empty string |
+| Skeleton loading | Animated placeholder cards while fetching |
+| users.json expanded | 4 users → 10 users with 8 fields each |
+
+---
+
 ## 🚀 How to Run
 
 **Locally:**
@@ -240,14 +290,14 @@ cd BasicJs
 
 ## 📊 Labs Comparison
 
-| | Lab 01 | Lab 02 | Lab 03 | Lab 04 | Lab 05 |
-|---|---|---|---|---|---|
-| **Technology** | HTML | CSS | JavaScript | JavaScript | JavaScript |
-| **Focus** | Structure & Multimedia | Layout & Styling | Logic & Loops | Objects & Arrays | DOM Manipulation |
-| **Pages / Files** | 3 pages | 2 pages | 1 + folder | 1 + folder | 4 tasks + index |
-| **Main concept** | HTML elements | CSS layout | Switch, loops, DOM | Objects, dates, strings | DOM, events, classes |
-| **Bonus** | Image map | Space navbar | Pattern printing | Deep copy / Clone | Image gallery |
-| **README** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| | Lab 01 | Lab 02 | Lab 03 | Lab 04 | Lab 05 | Lab 06 |
+|---|---|---|---|---|---|---|
+| **Technology** | HTML | CSS | JavaScript | JavaScript | JavaScript | JavaScript |
+| **Focus** | Structure & Multimedia | Layout & Styling | Logic & Loops | Objects & Arrays | DOM Manipulation | Advanced DOM & Fetch |
+| **Pages / Files** | 3 pages | 2 pages | 1 + folder | 1 + folder | 4 tasks + index | 5 tasks + index |
+| **Main concept** | HTML elements | CSS layout | Switch, loops, DOM | Objects, dates, strings | DOM, events, classes | Delegation, JSON, Fetch |
+| **Bonus** | Image map | Space navbar | Pattern printing | Deep copy / Clone | Image gallery | Fetch API + users.json |
+| **README** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ---
 
