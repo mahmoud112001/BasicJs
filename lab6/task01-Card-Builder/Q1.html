@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Card Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <span class="tag">// card builder</span>
+    <h1>Card Builder</h1>
+  </div>
+
+  <!-- Input area -->
+  <div class="input-card">
+    <div class="input-row">
+      <input type="text" id="title" placeholder="Card title..."/>
+      <input type="text" id="message" placeholder="Card message..."/>
+      <button class="btn btn-yellow" id="addBtn">+ Add Card</button>
+      <button class="btn btn-ghost" id="clearAllBtn">Clear All</button>
+    </div>
+    <div class="err-row">
+      <span class="err-msg" id="title-err"></span>
+      <span class="err-msg" id="message-err"></span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <span class="tag">// cards</span>
+    <span class="count-pill" id="countPill">0 cards</span>
+  </div>
+
+  <!-- Cards grid -->
+  <section id="cards">
+    <div class="empty show" id="emptyState">
+      <span class="empty-icon">🃏</span>
+      No cards yet — add one above!
+    </div>
+  </section>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="./script.js"></script>
+</body>
+</html>
