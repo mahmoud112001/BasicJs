@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ex2 - Keyboard Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <div class="header">
+      <span class="tag">// keyboard events</span>
+      <h1>Keyboard Events</h1>
+      <p>Type in the input below to see live keyboard event data.</p>
+    </div>
+
+    <!-- Input -->
+    <div class="input-card">
+      <label for="text">Type something...</label>
+      <div class="input-row">
+        <input type="text" id="text" placeholder="Start typing..."/>
+        <button id="clearBtn">Clear</button>
+      </div>
+      <div class="input-meta">
+        <span id="charCount">0 characters</span>
+        <span id="wordCount">0 words</span>
+      </div>
+    </div>
+
+    <!-- Last key badge -->
+    <div class="key-display">
+      <span class="key-label">// last key pressed</span>
+      <div class="key-badge" id="keyBadge">—</div>
+      <div class="key-info" id="keyInfo"></div>
+    </div>
+
+    <!-- Event log -->
+    <div class="log-card">
+      <div class="log-header">
+        <span class="tag">// event log</span>
+        <button id="clearLogBtn">Clear Log</button>
+      </div>
+      <div class="log-body" id="log">
+        <span class="log-empty">No events yet — start typing above.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
